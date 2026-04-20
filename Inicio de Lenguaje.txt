@@ -1,0 +1,58 @@
+
+
+crear secuencia entre dos parentesis donde un eslabón puede contener a otro o concatenarse con otro.
+
+Léxica:
++ , in, ()1, ()2, if,then, else, return
+
+-----------------------------------------------
+
+Sintáctica:
+()1  + ()2 
+()1 in ()2
+if(+)then{ return ()1 + ()2}else{ return ()1 in ()2}
+
++: operador para concatenar ()1 con ()2
+in: operador para introducir ()2 en ()1
+and: si aún existen dos eslabones),
+if: condición para concatenar o introducir,
+then: hacer una cosa,
+else: hacer otra cosa,
+return: retorna el resultado
+
+
+
+------------------------------------------------
+
+Semántica:
+()1  + ()2 -> ()1()2
+
+()1 in ()2 -> (()2)1
+
+if(+)then{ return ()1 + ()2}else{ return ()1 in ()2}
+
+
+------------------------------------------------
+while, function, and, operar
+
+while ()1 and ()2
+function <identificador>()
+
+while: mientras existan dos eslabones a operar,
+function: define una función
+and: si aún existen ()1 y ()2 para realizar alguna operación
+operar: función para realizar alguna operación
+
+
+while ()1 and ()2{ operar(()1,()2, operador)}
+
+function operar(()1, ()2, operador)
+{
+	if(operador)then{()1 + ()2}else{()1 in ()2}
+}
+
+
+
+
+
+
