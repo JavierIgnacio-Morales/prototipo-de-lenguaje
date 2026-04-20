@@ -16,7 +16,7 @@ if(+)then{ return ()1 + ()2}else{ return ()1 in ()2}
 
 +: operador para concatenar ()1 con ()2
 in: operador para introducir ()2 en ()1
-and: si aún existen dos eslabones),
+and: si aún existen dos nodos,
 if: condición para concatenar o introducir,
 then: hacer una cosa,
 else: hacer otra cosa,
@@ -40,7 +40,7 @@ while, function, and, operar
 while ()1 and ()2
 function <identificador>()
 
-while: mientras existan dos eslabones a operar,
+while: mientras existan dos nodos a operar,
 function: define una función
 and: si aún existen ()1 y ()2 para realizar alguna operación
 operar: función para realizar alguna operación
