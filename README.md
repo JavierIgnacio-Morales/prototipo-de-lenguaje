@@ -6,7 +6,7 @@ Lenguaje a crear (completar)
 
 Objetivo:
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Crear cadena de parentesis**
+&nbsp;&nbsp;&nbsp;&nbsp; **Crear cadena de parentesis de la forma ()() | (()())()**
  
 Alcance:
  
