@@ -1,37 +1,47 @@
 
-Crear cadenas de paréntesis con parentesis internos si lo requiere.
+Crear estructuras de pares de paréntesis.
 
-crear la secuencia entre dos paréntesis o más paréntesis donde un nodo
- puede contener a otro u otros o concatenarse con otro u otros.
+Crear las estructuras que se requieran entre pares de paréntesis donde puede haber estructuras internas,
+llámese pares de paréntesis al par "()".
+
+Ejemplos válidos: ()()()() | (()())(())() | ((())) 
+Ejemplos inválidos: ))() | (() | ))((
 
 Léxica:
-+ , in, ()1, ()2, if,then, else, return, while, function
-
+Delimiters: (, )
+Operators: + , in, ==, !=
+Reserved words: if, then, else
+Variables: ( a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z )+
+Constants: true, false
 -----------------------------------------------
 
 Sintáctica:
-()1  + ()2 
-()1 in ()2
-if(+)then{ return ()1 + ()2}else{ return ()1 in ()2}
+
+S -> ()   | S O S | if O then S else S
+O -> + |  in 
+
+
+( )  +  ( ) 
+( )  in ( ) 
+( ) == ( )
+
 
 +: operador para concatenar ()1 con ()2
 in: operador para introducir ()2 en ()1
-and: si aún existen dos nodos,
 if: condición para concatenar o introducir,
 then: hacer una cosa,
 else: hacer otra cosa,
-return: retorna el resultado
-
 
 
 ------------------------------------------------
 
 Semántica:
-()1  + ()2 -> ()1()2
-
-()1 in ()2 -> (()2)1
-
-if(+)then{ return ()1 + ()2}else{ return ()1 in ()2}
+() + ()   -> ()()
+() in ()   -> (())
+() == () -> true
+() !=  () -> false
+if(   true ) then { A } else { B } -> A
+if( false) then { A } else { B } -> B
 
 
 ------------------------------------------------
