@@ -5,7 +5,7 @@ crear la secuencia entre dos paréntesis o más paréntesis donde un nodo
  puede contener a otro u otros o concatenarse con otro u otros.
 
 Léxica:
-+ , in, ()1, ()2, if,then, else, return
++ , in, ()1, ()2, if,then, else, return, while, function
 
 -----------------------------------------------
 
