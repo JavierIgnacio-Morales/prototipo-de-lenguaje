@@ -9,39 +9,30 @@ Ejemplos inválidos: ))() | (() | ))((
 
 Léxica:
 Delimiters: (, )
-Operators: + , in, ==, !=
+Operators: + , in
 Reserved words: if, then, else
-Variables: ( a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z )+
-Constants: true, false
+
++: operador para concatenar ()1 con ()2
+in: operador para introducir ()1 en ()2
+if: condición para concatenar o introducir,
+then: hacer una cosa,
+else: hacer otra cosa,
 -----------------------------------------------
 
 Sintáctica:
 
-S -> ()   | S O S | if O then S else S
-O -> + |  in 
-
-
-( )  +  ( ) 
-( )  in ( ) 
-( ) == ( )
-
-
-+: operador para concatenar ()1 con ()2
-in: operador para introducir ()2 en ()1
-if: condición para concatenar o introducir,
-then: hacer una cosa,
-else: hacer otra cosa,
-
+S -> T O S | T
+t ->  ()   | if O then S else S
+O ->  +    | in 
 
 ------------------------------------------------
 
 Semántica:
-() + ()   -> ()()
-() in ()   -> (())
-() == () -> true
-() !=  () -> false
-if(   true ) then { A } else { B } -> A
-if( false) then { A } else { B } -> B
+A + B -> AB // ej: (()) + ()() = (())()()
+A in () -> (A)
+A in (B)-> (A in B) | (A + B) // ej: ()() in (()) -> ((()())) | (()()()) 
+if(+) then { A } else { B } -> A
+if(in) then{ A } else { B } -> B
 
 
 ------------------------------------------------
