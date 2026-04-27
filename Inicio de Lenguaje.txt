@@ -8,52 +8,90 @@ Ejemplos válidos: ()()()() | (()())(())() | ((()))
 Ejemplos inválidos: ))() | (() | ))((
 
 Léxica:
+
 Delimiters: (, )
 Operators: + , in
 Reserved words: if, then, else
+Symbol: =
+id: (a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z)+
+n: (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)(0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)*
 
 +: operador para concatenar ()1 con ()2
 in: operador para introducir ()1 en ()2
 if: condición para concatenar o introducir,
 then: hacer una cosa,
 else: hacer otra cosa,
+=: símbolo de asignación
+id: variable para contener resultados de los operadores
+n: numero para indicar cuantos in realizar
+
 -----------------------------------------------
 
 Sintáctica:
 
-S -> T O S | T
-t ->  ()   | if O then S else S
+S -> T + S | T in(N) S | T
+T ->  ()   | if O then S else S | V = S | V 
 O ->  +    | in 
-
+V -> id
+N -> n
 ------------------------------------------------
 
 Semántica:
-A + B -> AB // ej: (()) + ()() = (())()()
-A in () -> (A)
-A in (B)-> (A in B) | (A + B) // ej: ()() in (()) -> ((()())) | (()()()) 
-if(+) then { A } else { B } -> A
-if(in) then{ A } else { B } -> B
 
+A + B -> AB		// ej: (()) + ()() = (())()()
+A in B = A in(1) B -> (A)	// ej: () in () -> (())
+A in(k) (B) -> (A in(k-1) B)
+A in(k) (B C) -> (A in(k) B) C 	// ej: () in(1) ((())) = ((()()))
+if(+) then { A } else { B } -> A	
+if(in) then{ A } else { B } -> B
+V = A  			// guarda A en V
+V 			// Retorna A
 
 ------------------------------------------------
-while, function, and, operar
+------------------------------------------------
 
-while ()1 and ()2
-function <identificador>()
+EJEMPLO DE USO:
 
-while: mientras existan dos nodos a operar,
-function: define una función
-and: si aún existen ()1 y ()2 para realizar alguna operación
-operar: función para realizar alguna operación
+Si se quisiera programar (()())(()(()))
+-------------------------------------------------------------
+
+a = ()
+b = a + a
+c = b in a
+
+c -> (()())
+--------------
+e = a in a
+f = a + e
+g = f in a
+
+g -> (()(()))
+--------------
+h = c + g
+
+h -> (()())(()(()))
 
 
-while ()1 and ()2{ operar(()1,()2, operador)}
+++++++++++++++++++++++++++
 
-function operar(()1, ()2, operador)
-{
-	if(operador)then{()1 + ()2}else{()1 in ()2}
-}
+a = ()
+b = a + a
+c = b in a
 
+c -> (()())
+-------------------
+d = a in a -> (())
+e = a in(2) d -> ((()))
+f = a in e 
+
+f -> (()(()))
+----------------
+g = c + f
+g -> (()())(()(()))
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 
