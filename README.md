@@ -50,7 +50,7 @@ Descripción:
 > A in(k) (B C) -> (A in(k) B) C   
 > if(+) then { A } else { B } -> A
 > if(in) then{ A } else { B } -> B  
-> V = A
+> V = A  
 > V  
 
 ------------------------------------------------
