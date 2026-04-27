@@ -11,15 +11,14 @@ Léxica:
 
 Delimiters: (, )
 Operators: + , in
-Reserved words: if, then, else
-Symbol: =
+Reserved words: if, else
+Symbol: =, :
 id: (a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z)+
 n: (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)(0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)*
 
 +: operador para concatenar ()1 con ()2
 in: operador para introducir ()1 en ()2
 if: condición para concatenar o introducir,
-then: hacer una cosa,
 else: hacer otra cosa,
 =: símbolo de asignación
 id: variable para contener resultados de los operadores
@@ -30,7 +29,7 @@ n: numero para indicar cuantos in realizar
 Sintáctica:
 
 S -> T + S | T in(N) S | T
-T ->  ()   | if O then S else S | V = S | V 
+T ->  ()   | if + : S else S | if in : S else S | V = S | V 
 O ->  +    | in 
 V -> id
 N -> n
@@ -39,11 +38,12 @@ N -> n
 Semántica:
 
 A + B -> AB		// ej: (()) + ()() = (())()()
-A in B = A in(1) B -> (A)	// ej: () in () -> (())
+A in B ≡ A in(1) B
+A in(1) () -> (A)	// ej: () in () -> (())
 A in(k) (B) -> (A in(k-1) B)
 A in(k) (B C) -> (A in(k) B) C 	// ej: () in(1) ((())) = ((()()))
-if(+) then { A } else { B } -> A	
-if(in) then{ A } else { B } -> B
+if  + : A else B -> A	
+if in : A else B -> B
 V = A  			// guarda A en V
 V 			// Retorna A
 
