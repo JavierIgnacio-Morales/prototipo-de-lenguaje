@@ -58,11 +58,12 @@ llámese pares de paréntesis al par "()".
 ### EJEMPLO DE USO:
 
 *Si se quisiera programar (()())(()(()))*  
-´
-&nbsp;&nbsp;a = ()  
-&nbsp;&nbsp;b = a + a  
-&nbsp;&nbsp;c = b in a  
+´  
 
+a = ()  
+b = a + a  
+c = b in a  
+´  
 &nbsp;&nbsp;c -> (()())  
 
 
