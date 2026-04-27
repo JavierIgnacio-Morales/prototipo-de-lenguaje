@@ -44,10 +44,10 @@ Descripción:
 
 ## Especificaciones semánticas:
 
- > A + B -> AB		 
- > A in B = A in(1) B -> (A)	 
- > A in(k) (B) -> (A in(k-1) B)  
- > A in(k) (B C) -> (A in(k) B) C 	 
+> A + B -> AB
+> A in B = A in(1) B -> (A)
+> A in(k) (B) -> (A in(k-1) B)
+> A in(k) (B C) -> (A in(k) B) C 	 
  > if(+) then { A } else { B } -> A  
  > if(in) then{ A } else { B } -> B  
  > V = A			
