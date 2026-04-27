@@ -17,40 +17,40 @@ llámese pares de paréntesis al par "()".
 
  - Delimiters: (, )  
  - Operators: + , in  
->Reserved words: if, then, else  
->Symbol: =  
->id: (a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z)+  
->n: (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)(0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)*  
+ - Reserved words: if, then, else  
+ - Symbol: =  
+ - id: (a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z)+  
+ - n: (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)(0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)*  
 
-&nbsp;&nbsp;**+**: *operador para concatenar ()1 con ()2*  
-&nbsp;&nbsp;**in**: *operador para introducir ()1 en ()2*  
-&nbsp;&nbsp;**if**: *condición para concatenar o introducir*  
-&nbsp;&nbsp;**then**: *hacer una cosa*  
-&nbsp;&nbsp;**else**: *hacer otra cosa*  
-&nbsp;&nbsp;**=**: *símbolo de asignación*  
-&nbsp;&nbsp;**id**: *variable para contener resultados de los operadores*  
-&nbsp;&nbsp;**n**: *numero para indicar cuantos in realizar*  
+ - **+**: *operador para concatenar ()1 con ()2*  
+ - **in**: *operador para introducir ()1 en ()2*  
+ - **if**: *condición para concatenar o introducir*  
+ - **then**: *hacer una cosa*  
+ - **else**: *hacer otra cosa*  
+ - **=**: *símbolo de asignación*  
+ - **id**: *variable para contener resultados de los operadores*  
+ - **n**: *numero para indicar cuantos in realizar*  
 
 
 ## Especificaciones sintácticas:
 
-&nbsp;&nbsp;S -> T + S | T in(N) S | T  
-&nbsp;&nbsp;T -> () | if O then S else S | V = S | V   
-&nbsp;&nbsp;O -> +  | in  
-&nbsp;&nbsp;V -> id  
-&nbsp;&nbsp;N -> n  
+ > S -> T + S | T in(N) S | T  
+ > T -> () | if O then S else S | V = S | V   
+ > O -> +  | in  
+ > V -> id  
+ > N -> n  
 
 
 ## Especificaciones semánticas:
 
-&nbsp;&nbsp;A + B -> AB		 &nbsp;&nbsp;&nbsp;&nbsp;*// ej: (()) + ()() = (())()()*  
-&nbsp;&nbsp;A in B = A in(1) B -> (A)	&nbsp;&nbsp;*// ej: () in () -> (())*  
-&nbsp;&nbsp;A in(k) (B) -> (A in(k-1) B)  
-&nbsp;&nbsp;A in(k) (B C) -> (A in(k) B) C 	&nbsp;*// ej: () in(1) ((())) = ((()()))*  
-&nbsp;&nbsp;if(+) then { A } else { B } -> A  
-&nbsp;&nbsp;if(in) then{ A } else { B } -> B  
-&nbsp;&nbsp;V = A			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*// guarda A en V*  
-&nbsp;&nbsp;V 			   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*// Retorna A*  
+ > A + B -> AB		 &nbsp;&nbsp;&nbsp;&nbsp;*// ej: (()) + ()() = (())()()*  
+ > A in B = A in(1) B -> (A)	&nbsp;&nbsp;*// ej: () in () -> (())*  
+ > A in(k) (B) -> (A in(k-1) B)  
+ > A in(k) (B C) -> (A in(k) B) C 	&nbsp;*// ej: () in(1) ((())) = ((()()))*  
+ > if(+) then { A } else { B } -> A  
+ > if(in) then{ A } else { B } -> B  
+ > V = A			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*// guarda A en V*  
+ > V 			   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*// Retorna A*  
 
 ------------------------------------------------
 ------------------------------------------------
