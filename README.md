@@ -59,46 +59,44 @@ llámese pares de paréntesis al par "()".
 
 *Si se quisiera programar (()())(()(()))*  
 ´
-a = ()  
-b = a + a  
-c = b in a  
+&nbsp;&nbsp;a = ()  
+&nbsp;&nbsp;b = a + a  
+&nbsp;&nbsp;c = b in a  
 
-c -> (()())  
--
+&nbsp;&nbsp;c -> (()())  
 
-e = a in a  
-f = a + e  
-g = f in a  
 
-g -> (()(()))  
--
+&nbsp;&nbsp;e = a in a  
+&nbsp;&nbsp;f = a + e  
+&nbsp;&nbsp;g = f in a  
 
-h = c + g  
+&nbsp;&nbsp;g -> (()(()))  
 
-h -> (()())(()(()))  
--
 
-++++++++++++++++++++++++++
-Otra forma  
+&nbsp;&nbsp;h = c + g  
 
-a = ()  
-b = a + a  
-c = b in a  
+&nbsp;&nbsp;h -> (()())(()(()))  
 
-c -> (()())  
--
 
-d = a in a -> (())  
-e = a in(2) d -> ((()))  
-f = a in e  
+++++++++++++++++++++++++++  
+**Otra forma**  
 
-f -> (()(()))  
--
+&nbsp;&nbsp;a = ()  
+&nbsp;&nbsp;b = a + a  
+&nbsp;&nbsp;c = b in a  
 
-g = c + f  
+&nbsp;&nbsp;c -> (()())  
 
-g -> (()())(()(()))  
--
+&nbsp;&nbsp;d = a in a -> (())  
+&nbsp;&nbsp;e = a in(2) d -> ((()))  
+&nbsp;&nbsp;f = a in e  
+
+&nbsp;&nbsp;f -> (()(()))  
+
+&nbsp;&nbsp;g = c + f  
+
+&nbsp;&nbsp;g -> (()())(()(()))  
+
 ´
 
 
