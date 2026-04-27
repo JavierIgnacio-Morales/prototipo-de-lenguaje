@@ -44,14 +44,14 @@ Descripción:
 
 ## Especificaciones semánticas:
 
- > A + B -> AB		 &nbsp;&nbsp;&nbsp;&nbsp;*// ej: (()) + ()() = (())()()*  
- > A in B = A in(1) B -> (A)	&nbsp;&nbsp;*// ej: () in () -> (())*  
+ > A + B -> AB		 
+ > A in B = A in(1) B -> (A)	 
  > A in(k) (B) -> (A in(k-1) B)  
- > A in(k) (B C) -> (A in(k) B) C 	&nbsp;*// ej: () in(1) ((())) = ((()()))*  
+ > A in(k) (B C) -> (A in(k) B) C 	 
  > if(+) then { A } else { B } -> A  
  > if(in) then{ A } else { B } -> B  
- > V = A			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*// guarda A en V*  
- > V 			   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*// Retorna A*  
+ > V = A			
+ > V  
 
 ------------------------------------------------
 ------------------------------------------------
