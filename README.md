@@ -64,41 +64,36 @@ a = ()
 b = a + a  
 c = b in a  
 
-&nbsp;&nbsp;c -> (()())  
+c -> (()())  
 
+e = a in a  
+f = a + e  
+g = f in a  
 
-&nbsp;&nbsp;e = a in a  
-&nbsp;&nbsp;f = a + e  
-&nbsp;&nbsp;g = f in a  
+g -> (()(()))  
 
-&nbsp;&nbsp;g -> (()(()))  
+h = c + g  
 
-
-&nbsp;&nbsp;h = c + g  
-
-&nbsp;&nbsp;h -> (()())(()(()))  
+h -> (()())(()(()))  
 ```  
 
-++++++++++++++++++++++++++  
+
 **Otra forma**  
 ```  
-&nbsp;&nbsp;a = ()  
-&nbsp;&nbsp;b = a + a  
-&nbsp;&nbsp;c = b in a  
+a = ()  
+b = a + a  
+c = b in a  
 
-&nbsp;&nbsp;c -> (()())  
+c -> (()())  
 
-&nbsp;&nbsp;d = a in a -> (())  
-&nbsp;&nbsp;e = a in(2) d -> ((()))  
-&nbsp;&nbsp;f = a in e  
+d = a in a -> (())  
+e = a in(2) d -> ((()))  
+f = a in e  
 
-&nbsp;&nbsp;f -> (()(()))  
+f -> (()(()))  
 
-&nbsp;&nbsp;g = c + f  
+g = c + f  
 
-&nbsp;&nbsp;g -> (()())(()(()))  
+g -> (()())(()(()))  
 
 ```  
-´
-
-
