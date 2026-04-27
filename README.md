@@ -35,11 +35,11 @@ Descripción:
 
 ## Especificaciones sintácticas:
 
- > S -> T + S | T in(N) S | T  
- > T -> () | if O then S else S | V = S | V   
- > O -> +  | in  
- > V -> id  
- > N -> n  
+> S -> T + S | T in(N) S | T  
+> T -> () | if O then S else S | V = S | V
+> O -> +  | in
+> V -> id
+> N -> n
 
 
 ## Especificaciones semánticas:
