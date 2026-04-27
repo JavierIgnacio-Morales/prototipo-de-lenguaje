@@ -16,11 +16,11 @@ llámese pares de paréntesis al par "()".
 ## Especificaciones léxicas:
 
 >Delimiters: (, )  
-    -Operators: + , in  
-    -Reserved words: if, then, else  
-    -Symbol: =  
-    -id: (a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z)+  
-    -n: (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)(0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)*  
+>Operators: + , in  
+>Reserved words: if, then, else  
+>Symbol: =  
+>id: (a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z)+  
+>n: (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)(0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)*  
 
 &nbsp;&nbsp;**+**: *operador para concatenar ()1 con ()2*  
 &nbsp;&nbsp;**in**: *operador para introducir ()1 en ()2*  
