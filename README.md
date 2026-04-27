@@ -15,7 +15,7 @@ llámese pares de paréntesis al par "()".
 
 ## Especificaciones léxicas:
 
-&nbsp;Delimiters: (, )  
+    -;Delimiters: (, )  
 &nbsp;Operators: + , in  
 &nbsp;Reserved words: if, then, else  
 &nbsp;Symbol: =  
