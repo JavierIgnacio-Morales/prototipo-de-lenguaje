@@ -9,10 +9,9 @@ Ejemplos inválidos: ))() | (() | ))((
 
 Léxica:
 
-
 Delimiters: (, )
 Operators: + , in
-Reserved words: if, else
+Reserved words: if, else, print, repeat
 Symbol: =, :
 id: (a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z)+
 n: (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)(0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)*
@@ -30,7 +29,7 @@ n: numero para indicar cuantos in realizar
 Sintáctica:
 
 S -> T + S | T in(N) S | T
-T ->  ()   | if + : S else S | if in : S else S | V = S | V 
+T ->  () | print S | repeat N: S | if S in S: S else: S | V = S | V 
 V -> id
 N -> n
 ------------------------------------------------
@@ -38,19 +37,29 @@ N -> n
 Semántica:
 
 A + B -> AB		// ej: (()) + ()() = (())()()
+
+A in B (en expresión)
 A in B ≡ A in(1) B
 A in(1) () -> (A)	// ej: () in () -> (())
 A in(k) (B) -> (A in(k-1) B)
 A in(k) (B C) -> (A in(k) B) C 	// ej: () in(1) ((())) = ((()()))
-if  + : A else B -> A	
-if in : A else B -> B
-V = A  			// guarda A en V
+
+A in B (en condición)
+A in B -> true		// Si la estructura A es subestructura de B
+A in B -> false		// Si la estructura A no es subestructura de B
+if  A in B : X else: Y 	// X si A in B
+if  A in B : X else: Y 	// Y si no	
+
+V = A  			// Guarda A en V
 V 			// Retorna A
-
+print X			// Muestra en pantalla lo que retorna X
+repeat n: X		// Ejecuta X n veces de forma secuencial
 ------------------------------------------------
 ------------------------------------------------
 
-EJEMPLO DE USO:
+EJEMPLOS DE USO:
+
+1)
 
 Si se quisiera programar (()())(()(()))
 -------------------------------------------------------------
@@ -93,7 +102,16 @@ g -> (()())(()(()))
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+2)
 
+Si se quisiera programar ()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()
+-------------------------------------------------------------
 
-
+a = ()
+b = a in a
+c = if a in b: b in(2) b else: b
+d = c + a
+e = a + d
+repeat 3: e = e + e
+print e
 
