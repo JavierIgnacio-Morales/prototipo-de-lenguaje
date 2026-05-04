@@ -11,7 +11,7 @@ Léxica:
 
 Delimiters: (, )
 Operators: + , in
-Reserved words: if, else, print, repeat
+Reserved words: if, else, print, begin, end, function // repeat
 Symbol: =, :
 id: (a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z)+
 n: (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)(0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)*
@@ -23,18 +23,24 @@ else: hacer otra cosa,
 =: símbolo de asignación
 id: variable para contener resultados de los operadores
 n: numero para indicar cuantos in realizar
-
+print: imprime en pantalla
+begin: comienzo
+end: final
+function: función
 -----------------------------------------------
 
 Sintáctica:
 
+Program -> begin S end
 S -> T + S | T in(N) S | T
-T ->  () | print S | repeat N: S | if S in S: S else: S | V = S | V 
+T ->  () | print S | if S in S: S else: S | def V: S | V() | V = S | V  //| repeat N: S
 V -> id
 N -> n
 ------------------------------------------------
 
 Semántica:
+
+begin X end -> X
 
 A + B -> AB		// ej: (()) + ()() = (())()()
 
@@ -47,13 +53,16 @@ A in(k) (B C) -> (A in(k) B) C 	// ej: () in(1) ((())) = ((()()))
 A in B (en condición)
 A in B -> true		// Si la estructura A es subestructura de B
 A in B -> false		// Si la estructura A no es subestructura de B
-if  A in B : X else: Y 	// X si A in B
-if  A in B : X else: Y 	// Y si no	
+if  A in B : X else: Y 	-> X si A in B
+if  A in B : X else: Y 	-> Y si no
+
+def f : S -> guarda S con nombre f
+f() -> evalúa S	
 
 V = A  			// Guarda A en V
 V 			// Retorna A
 print X			// Muestra en pantalla lo que retorna X
-repeat n: X		// Ejecuta X n veces de forma secuencial
+// repeat n: X		// Ejecuta X n veces de forma secuencial
 ------------------------------------------------
 ------------------------------------------------
 
@@ -64,41 +73,46 @@ EJEMPLOS DE USO:
 Si se quisiera programar (()())(()(()))
 -------------------------------------------------------------
 
+begin
+
 a = ()
 b = a + a
 c = b in a
 
-c -> (()())
+c // contiene (()())
+
 --------------
 e = a in a
 f = a + e
 g = f in a
 
-g -> (()(()))
+g // contiene (()(()))
 --------------
 h = c + g
 
-h -> (()())(()(()))
+print h // muestra en pantalla (()())(()(()))
 
-
+end
 ++++++++++++++++++++++++++
 
+begin
 a = ()
 b = a + a
 c = b in a
 
-c -> (()())
+c // contiene (()())
 -------------------
 d = a in a -> (())
 e = a in(2) d -> ((()))
 f = a in e 
 
-f -> (()(()))
+f // contiene (()(()))
 ----------------
 g = c + f
-g -> (()())(()(()))
 
+print g // muestra en pantalla (()())(()(()))
 
+end
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -107,11 +121,51 @@ g -> (()())(()(()))
 Si se quisiera programar ()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()
 -------------------------------------------------------------
 
+begin
+
+a = ()
+b = a in a
+c = if a in b: b in(2) b else: b
+d = c + a
+e = a + d // 
+print e // muestra en pantalla ()(((())))()
+e = e + e
+print e // muestra en pantalla ()(((())))()()(((())))()
+e = e + e
+print e // muestra en pantalla ()(((())))()()(((())))()()(((())))()()(((())))()
+e = e + e
+print e // muestra en pantalla ()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()
+
+end
+
+-------------------------------------------------------------
+con repeat si se implementa
+begin
+
 a = ()
 b = a in a
 c = if a in b: b in(2) b else: b
 d = c + a
 e = a + d
 repeat 3: e = e + e
-print e
+print e // muestra en pantalla ()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()
 
+end
+
+3)
+
+Si se quisiera programar (())(())(())(())(())(())(())(())
+-------------------------------------------------------------
+
+begin
+
+a = ()
+def inc: a in a
+b = inc() + inc()
+def conc: b + b
+c = conc() + conc()
+print c // muestra en pantalla (())(())(())(())(())(())(())(())
+
+end
+
+-------------------------------------------------------------
