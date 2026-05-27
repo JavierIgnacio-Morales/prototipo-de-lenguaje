@@ -16,8 +16,8 @@
 - Los identificadores deberan contener solamente letras de la a a la z en minuscula.
 - Operadores son infijos:
    + (concatenación): a + a = aa
-   in (inclusión): a in a
-   = (asignación): a = a in b
+   &nbsp;in (inclusión): a in a
+   &nbsp;= (asignación): a = a in b
 - 
 -
 -
