@@ -15,9 +15,9 @@
 - Constantes son los numeros enteros.
 - Los identificadores deberan contener solamente letras de la a a la z en minuscula.
 - Operadores son infijos:
-   + (concatenación): a + a = aa
-   &nbsp;in (inclusión): a in a
-   &nbsp;= (asignación): a = a in b
+   + (concatenación): a + a = aa.
+   &nbsp;in (inclusión): a in a.
+   &nbsp;= (asignación): a = a in b.
 - 
 -
 -
