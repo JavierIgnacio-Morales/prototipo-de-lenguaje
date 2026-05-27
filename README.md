@@ -18,14 +18,13 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
    + "+"  (concatenación): a + a = aa.
    + "in" (inclusión): a in a.
    + "="  (asignación): a = a in b.
-- 
--
--
+- Delimitadores de estructura básica
+- condicional if el cual evaluara un operador + o = 
 
 
 ## Especificaciones léxicas:
 
- - Delimiters: (, )  
+ - Delimiters: ( inicio , ) cierre  
  - Operators: + , in  
  - Reserved words: if, then, else  
  - Symbol: =  
