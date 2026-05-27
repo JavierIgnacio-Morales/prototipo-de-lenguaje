@@ -16,8 +16,8 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 - Los identificadores deberan contener solamente letras de la a a la z en minuscula.
 - Operadores son infijos:
    + (concatenación): a + a = aa.
-   &nbsp;in (inclusión): a in a.
-   &nbsp;= (asignación): a = a in b.
+   in (inclusión): a in a.
+   = (asignación): a = a in b.
 - 
 -
 -
