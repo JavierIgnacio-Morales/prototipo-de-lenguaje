@@ -12,8 +12,13 @@
 - Cual quier tirpo de estructura que se requieran entre pares de paréntesis donde puede haber estructuras internas, por ejemplo "(())" | ()(())() | etc
 - Los programas no estaran delimitados por un iniciador y un finalizador.
 - Contendran las palabras reservadas, if, else, then.
-- Operadores son: + , in , =
+- Constantes son los numeros enteros.
 - Los identificadores deberan contener solamente letras de la a a la z en minuscula.
+- Operadores son infijos:
+   + (concatenación): a + a = aa
+   in (inclusión): a in a
+   = (asignación): a = a in b
+- 
 -
 -
 
