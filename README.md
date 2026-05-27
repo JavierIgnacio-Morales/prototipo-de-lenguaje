@@ -4,7 +4,7 @@
 
 ## Objetivo:
 
-Se decide crear el lenguaje de programación denominado "paréntesis" el cual permita diseñar distintos programas con los cuales definir estructuras complejas entre pares de parentesis, llamando par de parentesis a la dupla ()
+Se decide crear el lenguaje de programación denominado "paréntesis" el cual permita diseñar distintos programas con los cuales definir estructuras complejas entre pares de paréntesis, llamando par de parentesis a la dupla ()
 
 
 ## Alcance:
@@ -14,18 +14,18 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 - Contendran las palabras reservadas, if, else, then.
 - Constantes son los numeros enteros.
 - Los identificadores deberan contener solamente letras de la a a la z en minúscula.
-- Losoperadores son infijos:
+- Los operadores son infijos:
    + "+"  (concatenación): a + a = aa.
    + "in" (inclusión): a in a.
    + "="  (asignación): a = a in b.
 - Delimitadores de estructura básica, el par "(" , ")"
-- La estructura condicional "if" sera el cual evaluara expresiones con "+" o "in"
+- La estructura condicional "if" evaluara expresiones con "+" o "in"
 
 
 ## Especificaciones léxicas:
 
  - Delimitadores: ( inicio , ) cierre  
- - Operadores aritméticos: + , in
+ - Operadores: + , in
  - Operadores de asignación: =
  - Palabras reservadas: if, then, else  
  - id: (a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z)+  
