@@ -9,25 +9,25 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 
 ## Alcance:
 
-- Cual quier tirpo de estructura que se requieran entre pares de paréntesis donde puede haber estructuras internas, por ejemplo "(())" | ()(())() | etc
+- El lenguaje permitirá representar cualquier tipo de estructura formada por pares de paréntesis, pudiendo contener estructuras internas, por ejemplo: (()) | ()(())() | etc
 - Los programas no estaran delimitados por un iniciador y un finalizador.
 - Contendran las palabras reservadas, if, else, then.
 - Constantes son los numeros enteros.
-- Los identificadores deberan contener solamente letras de la a a la z en minuscula.
-- Operadores son infijos:
+- Los identificadores deberan contener solamente letras de la a a la z en minúscula.
+- Losoperadores son infijos:
    + "+"  (concatenación): a + a = aa.
    + "in" (inclusión): a in a.
    + "="  (asignación): a = a in b.
 - Delimitadores de estructura básica, el par "(" , ")"
-- condicional if el cual evaluara un operador "+" o "="
+- La estructura condicional "if" sera el cual evaluara expresiones con "+" o "in"
 
 
 ## Especificaciones léxicas:
 
- - Delimiters: ( inicio , ) cierre  
- - Operators: + , in  
- - Reserved words: if, then, else  
- - Symbol: =  
+ - Delimitadores: ( inicio , ) cierre  
+ - Operadores aritméticos: + , in
+ - Operadores de asignación: =
+ - Palabras reservadas: if, then, else  
  - id: (a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z)+  
  - n: (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)(0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)*  
   
