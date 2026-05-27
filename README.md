@@ -4,13 +4,14 @@
 
 ## Objetivo:
 
-&nbsp;Crear estructuras de pares de paréntesis, de la forma ()() | (()())()
+&nbsp;Se decide crear el lenguaje de programación denominado "paréntesis" el cual permita diseñar distintos programas con los cuales definir estructuras complejas entre pares de parentesis, llamando par de parentesis a la dupla ()
 
 
 ## Alcance:
 
-&nbsp;Crear las estructuras que se requieran entre pares de paréntesis donde puede haber estructuras internas,
-llámese pares de paréntesis al par "()".
+&nbsp;Cual quier tirpo de estructura que se requieran entre pares de paréntesis donde puede haber estructuras internas, por ejemplo "(())" | ()(())() | etc.
+&nbsp;Los programas no estaran delimitados por un iniciador y un finalizador.
+&nbsp;Contendran las palabras reservadas, if, else, then.
 
 
 ## Especificaciones léxicas:
