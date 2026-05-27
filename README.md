@@ -4,7 +4,7 @@
 
 ## Objetivo:
 
-&nbsp;Se decide crear el lenguaje de programación denominado "paréntesis" el cual permita diseñar distintos programas con los cuales definir estructuras complejas entre pares de parentesis, llamando par de parentesis a la dupla ()
+Se decide crear el lenguaje de programación denominado "paréntesis" el cual permita diseñar distintos programas con los cuales definir estructuras complejas entre pares de parentesis, llamando par de parentesis a la dupla ()
 
 
 ## Alcance:
