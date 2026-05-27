@@ -33,11 +33,11 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
   
 Descripción:  
  - **+**: *operador para concatenar ()1 con ()2*  
- - **in**: *operador para introducir ()1 en ()2*  
+ - **in**: *operador para introducir ()1 en ()2*
+ - **=**: *operador de asignación* 
  - **if**: *condición para concatenar o introducir*  
  - **then**: *hacer una cosa*  
  - **else**: *hacer otra cosa*  
- - **=**: *símbolo de asignación*  
  - **id**: *variable para contener resultados de los operadores*  
  - **n**: *numero para indicar cuantos in realizar*  
 
