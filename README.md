@@ -9,9 +9,9 @@
 
 ## Alcance:
 
-&nbsp;Cual quier tirpo de estructura que se requieran entre pares de paréntesis donde puede haber estructuras internas, por ejemplo "(())" | ()(())() | etc.
-&nbsp;Los programas no estaran delimitados por un iniciador y un finalizador.
-&nbsp;Contendran las palabras reservadas, if, else, then.
+- Cual quier tirpo de estructura que se requieran entre pares de paréntesis donde puede haber estructuras internas, por ejemplo "(())" | ()(())() | etc.
+-Los programas no estaran delimitados por un iniciador y un finalizador.
+-Contendran las palabras reservadas, if, else, then.
 
 
 ## Especificaciones léxicas:
