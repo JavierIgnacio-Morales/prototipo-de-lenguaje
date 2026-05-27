@@ -9,9 +9,13 @@
 
 ## Alcance:
 
-- Cual quier tirpo de estructura que se requieran entre pares de paréntesis donde puede haber estructuras internas, por ejemplo "(())" | ()(())() | etc.
--Los programas no estaran delimitados por un iniciador y un finalizador.
--Contendran las palabras reservadas, if, else, then.
+- Cual quier tirpo de estructura que se requieran entre pares de paréntesis donde puede haber estructuras internas, por ejemplo "(())" | ()(())() | etc
+- Los programas no estaran delimitados por un iniciador y un finalizador.
+- Contendran las palabras reservadas, if, else, then.
+- Operadores son: + , in , =
+- Los identificadores deberan contener solamente letras de la a a la z en minuscula.
+-
+-
 
 
 ## Especificaciones léxicas:
