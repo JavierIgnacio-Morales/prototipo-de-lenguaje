@@ -14,12 +14,12 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
      + Ejemplos inválidos: ))() | (() | ))(( | etc
 - Los programas estaran delimitados por el iniciador "begin" y un finalizador "end".
 - Contendran las palabras reservadas, if, else, begin, end, def, print.
-- Constantes son los numeros enteros.
+- Las constantes serán numeros enteros.
 - Los identificadores deberan contener solamente letras de la a a la z en minúscula.
 - Los operadores son infijos:
    + "+"  (concatenación): a + a = aa.
    + "in" (inclusión): introduce una estructura dentro de otra
-   + "="  (asignación): a = a in b.
+   + "="  (asignación): permite almacenar expresiones en identificadores
 - El operador "in" posee dos interpretaciones dependiendo del contexto en el que sea utilizado:
    + En expresiones, actúa como operador de inclusión de estructuras: A in(n) B
    + En estructuras condicionales, actúa como operador lógico de pertenencia: if A in B : expresión
