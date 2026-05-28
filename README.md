@@ -9,7 +9,9 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 
 ## Alcance:
 
-- El lenguaje permitirá representar cualquier tipo de estructura formada por pares de paréntesis, pudiendo contener estructuras internas, por ejemplo: (()) | ()(())() | etc
+- El lenguaje permitirá representar cualquier tipo de estructura formada por pares de paréntesis, pudiendo contener estructuras internas
+     + Ejemplos válidos: (()) | ()(())() | ()()()() | etc
+     + Ejemplos inválidos: ))() | (() | ))((
 - Los programas estaran delimitados por el iniciador "begin" y un finalizador "end".
 - Contendran las palabras reservadas, if, else, begin, end, def, print.
 - Constantes son los numeros enteros.
