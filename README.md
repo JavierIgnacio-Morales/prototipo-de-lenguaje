@@ -49,7 +49,8 @@ Descripción:
  - **:**: *indica el comienzo de una nueva expresión*  
  - **else**: *expresión alternativa si la condición es falsa*  
  - **id**: *variable para contener resultados de los operadores*  
- - **n**: *numero para indicar cuantos in realizar*  
+ - **n**: *numero para indicar cuantos in realizar*
+ - **print**: *imprime en pantalla*
 
 
 ## Especificaciones sintácticas:
