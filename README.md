@@ -16,19 +16,21 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 - Los identificadores deberan contener solamente letras de la a a la z en minúscula.
 - Los operadores son infijos:
    + "+"  (concatenación): a + a = aa.
-   + "in" (inclusión): a in a.
+   + "in" (inclusión): introduce una estructura dentro de otra
    + "="  (asignación): a = a in b.
 - El operador "in" posee dos interpretaciones dependiendo del contexto en el que sea utilizado:
    + En expresiones, actúa como operador de inclusión de estructuras: A in(n) B
    + En estructuras condicionales, actúa como operador lógico de pertenencia: if A in B : expresión
-- Delimitadores de estructura básica, el par "(" , ")" , ":"
-- "def" definira una nueva función de la forma: def id: expresión
+- Delimitadores de estructura básica, el par "(" , ")"
+- Se utilizara el simbolo ":" para indicar el comienzo de una nueva expresión
+- "def" definira una nueva función de la forma: def id : expresión
 - Se utilizara "print" para mostrar una expresión de la forma: print expresión
 
 
 ## Especificaciones léxicas:
 
- - Delimitadores: ( inicio , ) cierre , : sigue una expresion
+ - Delimitadores: ( inicio , ) cierre
+ - Símbolo:  :
  - Operadores: + , in
  - Operadores de asignación: =
  - Palabras reservadas: if, else, begin, end, def, print
@@ -41,9 +43,9 @@ Descripción:
  - **+**: *operador para concatenar ()1 con ()2*  
  - **in**: *operador para introducir ()1 en ()2*  
  - **=**: *operador de asignación*  
- - **if**: *condición para concatenar o introducir*
- - **:**: *fin de condición y retorna expresión siguiente*  
- - **else**: *hacer otra cosa si if es false*  
+ - **if**: *condicional*
+ - **:**: *indica el comienzo de una nueva expresión*  
+ - **else**: *expresión alternativa si la condición es falsa*  
  - **id**: *variable para contener resultados de los operadores*  
  - **n**: *numero para indicar cuantos in realizar*  
 
