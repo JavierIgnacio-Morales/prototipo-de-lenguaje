@@ -1,7 +1,6 @@
 class Scanner:
 
-    ERROR = '-1'
-    LEXEMA = ''
+    ERROR = 'ERROR'
     SINRETROCESO = {
         '+' : 'CONCATENAR',
         '=' : 'ASIGNAR',
@@ -18,6 +17,7 @@ class Scanner:
     def __init__(self, cadena):
         self.cadena = cadena + 'E'
         self.cursor = -1
+        self.LEXEMA = ''
 
     
     def quedanCaracteres(self):
@@ -27,7 +27,7 @@ class Scanner:
         if(self.cursor + 1 ) < len(self.cadena):
             self.cursor += 1
             return self.cadena[self.cursor]
-        return self.ERROR
+        return (self.ERROR, -1)
     
     def q0(self):
         self.LEXEMA = ''
@@ -46,7 +46,7 @@ class Scanner:
         if c == 'E':
             self.cursor +=1
             return 'END'
-        return self.ERROR
+        return (self.ERROR, c)
         
     def q1q5q19q20q34(self, c):
         return (self.SINRETROCESO[c], c)
@@ -79,7 +79,7 @@ class Scanner:
 
     
 
-scanner = Scanner('begin variable = 1 end')
+scanner = Scanner('(*in)')
 
 while scanner.quedanCaracteres():
     token = scanner.q0()
