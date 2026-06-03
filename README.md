@@ -51,7 +51,7 @@ Descripción:
  - **id**: *variable para contener resultados de los operadores*  
  - **n**: *numero para indicar cuantos in realizar*
  - **print**: *imprime en pantalla*
-
+ - **def**: *define una función*
 
 ## Especificaciones sintácticas:
 
