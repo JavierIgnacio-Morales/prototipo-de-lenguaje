@@ -43,10 +43,10 @@ Descripción:
  - **begin**: *comienzo de programa*  
  - **end**: *fin de programa*  
  - **+**: *operador para concatenar ()1 con ()2*  
- - **in**: *operador para introducir ()1 en ()2*  
+ - **in**: *operador para introducir ()1 en ()2. Puede utilizarse como in(n) para indicar el nivel de inclusión.*  
  - **=**: *operador de asignación*  
  - **if**: *condicional*
- - **:**: *indica el comienzo de una nueva expresión*  
+ - **':'**: *indica el comienzo de una nueva expresión*  
  - **else**: *expresión alternativa si la condición es falsa*  
  - **id**: *variable para contener resultados de los operadores*  
  - **n**: *numero para indicar cuantos in realizar*
@@ -81,40 +81,88 @@ Descripción:
 *Si se quisiera programar (()())(()(()))*  
  
 ```  
-a = ()  
-b = a + a  
-c = b in a  
+begin
 
-c -> (()())  
+a = ()
+b = a + a
+c = b in a
 
-e = a in a  
-f = a + e  
-g = f in a  
+c // contiene (()())
 
-g -> (()(()))  
+--------------
+e = a in a
+f = a + e
+g = f in a
 
-h = c + g  
+g // contiene (()(()))
+--------------
+h = c + g
 
-h -> (()())(()(()))  
+print h // muestra en pantalla (()())(()(()))
+
+end
 ```  
-
 
 **Otra forma**  
 ```  
-a = ()  
-b = a + a  
-c = b in a  
+begin
+a = ()
+b = a + a
+c = b in a
 
-c -> (()())  
+c // contiene (()())
+-------------------
+d = a in a -> (())
+e = a in(2) d -> ((()))
+f = a in e 
 
-d = a in a -> (())  
-e = a in(2) d -> ((()))  
-f = a in e  
+f // contiene (()(()))
+----------------
+g = c + f
 
-f -> (()(()))  
+print g // muestra en pantalla (()())(()(()))
 
-g = c + f  
+end 
 
-g -> (()())(()(()))  
+```
 
+------------------------------------------------
+------------------------------------------------
+
+*Si se quisiera programar ()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()*  
+ 
+```  
+begin
+
+a = ()
+b = a in a
+c = if a in b: b in(2) b else: b
+d = c + a
+e = a + d // 
+print e // muestra en pantalla ()(((())))()
+e = e + e
+print e // muestra en pantalla ()(((())))()()(((())))()
+e = e + e
+print e // muestra en pantalla ()(((())))()()(((())))()()(((())))()()(((())))()
+e = e + e
+print e // muestra en pantalla ()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()
+
+end
+```
+------------------------------------------------
+------------------------------------------------
+
+*Si se quisiera programar (())(())(())(())(())(())(())(())*  
+ 
+```  
+begin
+
+a = ()
+def inc: a in a
+b = inc() + inc()
+def conc: b + b
+c = conc() + conc()
+print c // muestra en pantalla (())(())(())(())(())(())(())(())
+
+end
 ```  
