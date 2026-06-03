@@ -18,7 +18,7 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 - Los identificadores deberan contener solamente letras de la a a la z en minúscula.
 - Los operadores son infijos:
    + "+"  (concatenación): a + a = aa.
-   + "in(n)" (inclusión): introduce una estructura dentro de otra hasta n capas
+   + "in" (inclusión): introduce una estructura dentro de otra
    + "="  (asignación): permite almacenar expresiones en identificadores
 - El operador "in" posee dos interpretaciones dependiendo del contexto en el que sea utilizado:
    + En expresiones, actúa como operador de inclusión de estructuras: A in(n) B
@@ -33,7 +33,7 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 
  - Delimitadores: ( inicio , ) cierre
  - Símbolo:  :
- - Operadores: + , in(n)
+ - Operadores: + , in
  - Operador de asignación: =
  - Palabras reservadas: if, else, begin, end, def, print
  - id: (a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z)+  
@@ -43,7 +43,7 @@ Descripción:
  - **begin**: *comienzo de programa*  
  - **end**: *fin de programa*  
  - **+**: *operador para concatenar ()1 con ()2*  
- - **in(n)**: *operador para introducir ()1 en ()2. Se utilizara como in(n) para indicar el nivel de inclusión.*  
+ - **in**: *operador para introducir ()1 en ()2. Se utilizara como in(n) para indicar el nivel de inclusión.*  
  - **=**: *operador de asignación*  
  - **if**: *condicional*
  - **':'**: *indica el comienzo de una nueva expresión*  
