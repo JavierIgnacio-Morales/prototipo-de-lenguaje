@@ -6,11 +6,12 @@ class Scanner:
         '=' : 'ASIGNAR',
         '(' : 'PARENT_ABRE',
         ')' : 'PARENT_CIERRA',
-        ':' : 'SIMBOLO'
+        ':' : 'SIMBOLO',
     }
     ENTERO = "CONSTANTE"
     IDENTIFICADOR = "L"
     LISTAPALABRASRESERVADAS =['print', 'end', 'else', 'begin', 'def', 'in', 'if',]
+    LISTACONSTANTES =['1', '2', '3',]
     PALABRARESERVADA = 'PALABRA_RESERVADA'
     IDENTIFICADOR = 'ID'
 
@@ -35,29 +36,32 @@ class Scanner:
         c = self.getCaracter()
         if c == ' ':
             return self.q0()
-        if c in self.SINRETROCESO:
+        elif c in self.SINRETROCESO:
             return self.q1q5q19q20q34(c)
-        if c.isdigit() and c != '0' :
-            self.LEXEMA = self.LEXEMA + c
-            return self.q4()
-        if 'a' <= c <= 'z':
+        elif c.isdigit():
+            return self.q17(c)
+        elif 'a' <= c <= 'z':
             self.LEXEMA = self.LEXEMA + c
             return self.letra()
-        if c == 'E':
+        elif c == 'E':
             self.cursor +=1
             return 'END'
-        return (self.ERROR, c)
+        else:
+            return (self.ERROR, c)
         
     def q1q5q19q20q34(self, c):
         return (self.SINRETROCESO[c], c)
     
-    def q4(self):
-        c = self.getCaracter()
-        if(c.isdigit()):
-            self.LEXEMA = self.LEXEMA + c
-            return self.q4()
-        self.retroceso()
-        return (self.ENTERO, self.LEXEMA)
+    def q17(self, c):
+        b = self.getCaracter()
+        if b == ')':
+            self.retroceso()
+            if c in self.LISTACONSTANTES:
+                return (self.ENTERO, c)
+            else:
+                return (self.ERROR, c)
+        return (self.ERROR, c+b)
+        
     
     def letra(self):
         c = self.getCaracter()
@@ -70,22 +74,12 @@ class Scanner:
         else:
             return (self.IDENTIFICADOR, self.LEXEMA)
   
-    
     def retroceso(self):
         self.cursor -= 1
 
 
-
-
-    
-
-scanner = Scanner('(*in)')
+scanner = Scanner('a = b in(21) c')
 
 while scanner.quedanCaracteres():
     token = scanner.q0()
     print(token)
-
-
-
-
-
