@@ -14,7 +14,7 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
      + Ejemplos inválidos: ((((())))) | ))() | (() | ))(( | etc
 - Los programas estaran delimitados por el iniciador "begin" y un finalizador "end".
 - Contendran las palabras reservadas, if, else, begin, end, def, print.
-- Las constantes serán numeros enteros del 1 al 3.
+- Las constantes serán números enteros comprendidos entre 1 y 3.
 - Los identificadores deberan contener solamente letras de la a a la z en minúscula.
 - Los operadores son infijos:
    + "+"  (concatenación): a + a = aa.
@@ -49,7 +49,7 @@ Descripción:
  - **':'**: *indica el comienzo de una nueva expresión*  
  - **else**: *expresión alternativa si la condición es falsa*  
  - **id**: *variable para contener resultados de los operadores*  
- - **n**: *numero para indicar cuantas capas internas ingresara*
+ - **n**: *indica el nivel de inclusión y si no existe usa el más profundo disponible*
  - **print**: *imprime en pantalla*
  - **def**: *define una función*
 
