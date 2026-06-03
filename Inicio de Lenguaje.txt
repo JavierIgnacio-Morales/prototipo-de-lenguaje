@@ -14,7 +14,7 @@ Operators: + , in
 Reserved words: if, else, print, begin, end, def// repeat
 Symbol: =, :
 id: (a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z)+
-n: (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)(0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)*
+n: 1 | 2 | 3 
 
 +: operador para concatenar ()1 con ()2
 in: operador para introducir ()1 en ()2
@@ -22,7 +22,7 @@ if: condición para concatenar o introducir,
 else: hacer otra cosa,
 =: símbolo de asignación
 id: variable para contener resultados de los operadores
-n: numero para indicar cuantos in realizar
+n: numero para indicar cuantas capas internas se debe ingresar
 print: imprime en pantalla
 begin: comienzo
 end: final
@@ -36,6 +36,22 @@ S -> T + S | T in(N) S | T
 T ->  () | print S | if S in S: S else: S | def V: S | V() | V = S | V  //| repeat N: S
 V -> id
 N -> n
+
+
+Prog -> begin ListaSent end 
+ListaSent -> Sent ListaSent | Sent 
+Sent -> Asig | Impr | Func 
+Asig -> Iden = Expr 
+Impr-> print Iden 
+Func -> def Iden: Expr' 
+Expr -> Expr' | if Iden in Iden : Expr' else: Expr' | ()
+Expr' -> Iden Oper Iden 
+Oper -> + | in(Cons) | in 
+Cons -> 1 | 2 | 3 | 4 | 5 
+Iden -> a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | 
+	a Iden | b Iden | c Iden | d Iden | e Iden | f Iden | g Iden | h Iden | i Iden | j Iden | k Iden | l Iden | m Iden |
+	 n Iden | o Iden | p Iden | q Iden | r Iden | s Iden | t Iden | u Iden | v Iden | w Iden | x Iden | y Iden | z Iden
+
 ------------------------------------------------
 
 Semántica:
@@ -66,7 +82,7 @@ print X			// Muestra en pantalla lo que retorna X
 ------------------------------------------------
 ------------------------------------------------
 
-EJEMPLOS DE USO:
+### EJEMPLOS DE USO:
 
 1)
 
@@ -139,22 +155,21 @@ print e // muestra en pantalla ()(((())))()()(((())))()()(((())))()()(((())))()(
 end
 
 -------------------------------------------------------------
-con repeat si se implementa
+con función
+
 begin
 
-a = ()
+a= ()
 b = a in a
 c = if a in b: b in(2) b else: b
 d = c + a
-e = a + d
-repeat 3: e = e + e
-print e // muestra en pantalla ()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()
+e = a + d // 
+def conc: e + e
+f= conc() + conc()
+print f // muestra en pantalla ()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()()(((())))()
 
 end
 
-3)
-
-Si se quisiera programar (())(())(())(())(())(())(())(())
 -------------------------------------------------------------
 
 begin
