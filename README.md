@@ -49,7 +49,7 @@ Descripción:
  - **':'**: *indica el comienzo de una nueva expresión*  
  - **else**: *expresión alternativa si la condición es falsa*  
  - **id**: *variable para contener resultados de los operadores*  
- - **n**: *indica el nivel de inclusión y si no existe usa el más profundo disponible*
+ - **n**: *si el nivel indicado es mayor que la profundidad de la estructura receptora, se utiliza el nivel más profundo disponible*
  - **print**: *imprime en pantalla*
  - **def**: *define una función*
 
