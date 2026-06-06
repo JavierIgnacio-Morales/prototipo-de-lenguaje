@@ -66,7 +66,7 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 
 *Diagráma de transiciones:*
 <p align="center">
-  <img src="automata.png" width="600">
+  <img src="Automata.png" width="600">
 </p>
 
 ## Especificaciones sintácticas:
