@@ -45,6 +45,7 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
  - **print**: *imprime en pantalla*
  - **def**: *define una función*
 
+*Tabla TOKEN -> PATRÓN:*
 
 | TOKEN          | PATRÓN   |
 |----------------|----------|
@@ -62,6 +63,11 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 | IN             | in       |
 | ID             | [a-z]+   |
 | SIMBOLO        | :        |
+
+*Diagráma de transiciones:*
+<p align="center">
+  <img src="automata.png" width="600">
+</p>
 
 ## Especificaciones sintácticas:
 
