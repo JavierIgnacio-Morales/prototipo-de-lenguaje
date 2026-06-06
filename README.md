@@ -76,7 +76,7 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 
 ## Especificaciones sintácticas:
 
-*GIC utilizando terminales:*
+*GIC utilizando lexemas:*
 
 > Prog -> begin ListaSent end  
 > ListaSent -> Sent ListaSent | Sent  
