@@ -46,22 +46,22 @@ Descripción:
  - **def**: *define una función*
 
 
-TOKEN		   PATRON
-
-CONCATENAR	     +
-ASIGNAR		     =
-PARENT_ABRE	     (
-PARENT_CIERRA	     )
-CONSTANTE	          [1-3]
-IF		          if
-ELSE		          else
-PRINT		     print
-BEGIN		     begin
-END		          end
-DEF		          def
-IN		          in
-ID		          [a-z]+
-SIMBOLO		     :
+| TOKEN          | PATRÓN   |
+|----------------|----------|
+| CONCATENAR     | +        |
+| ASIGNAR        | =        |
+| PARENT_ABRE    | (        |
+| PARENT_CIERRA  | )        |
+| CONSTANTE      | [1-3]    |
+| IF             | if       |
+| ELSE           | else     |
+| PRINT          | print    |
+| BEGIN          | begin    |
+| END            | end      |
+| DEF            | def      |
+| IN             | in       |
+| ID             | [a-z]+   |
+| SIMBOLO        | :        |
 
 ## Especificaciones sintácticas:
 
