@@ -11,7 +11,7 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 
 - El lenguaje permitirá representar cualquier tipo de estructura formada por pares de paréntesis, pudiendo contener estructuras internas hasta 4 capas
      + Ejemplos válidos: (((()))) | ()(())() | ()()()() | etc
-     + Ejemplos inválidos: ((((())))) | ))() | (() | ))(( | etc
+     + Ejemplos inválidos: ))() | (() | ))(( | etc
 - Los programas estaran delimitados por el iniciador "begin" y un finalizador "end".
 - Contendran las palabras reservadas, if, else, begin, end, def, print.
 - Las constantes serán números enteros comprendidos entre 1 y 3.
@@ -29,37 +29,57 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 - Se utilizara "print" para mostrar una expresión de la forma: print expresión
 
 
-## Especificaciones léxicas:
+## ESPECIFICACINES LÉXICAS:
 
- - Delimitadores: ( inicio , ) cierre
- - Símbolo:  :
- - Operadores: + , in
- - Operador de asignación: =
- - Palabras reservadas: if, else, begin, end, def, print
- - id: (a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z)+  
- - n: 1 | 2 | 3   
-  
-Descripción:
+*Descripción:*
  - **begin**: *comienzo de programa*  
  - **end**: *fin de programa*  
- - **+**: *operador para concatenar ()1 con ()2*  
- - **in**: *operador para introducir ()1 en ()2. Se utilizara como in(n) para indicar el nivel de inclusión.*  
- - **=**: *operador de asignación*  
- - **if**: *condicional*
+ - **+**: *operador infijo para concatenar A con B*  
+ - **in**: *operador infijo, para introducir A en B o como expresion booleana para el condicional, indica si A esta incluido en B*  
+ - **=**: *operador infijo de asignación*  
+ - **if**: *condicional para evaluar una condición de pertenencia*
  - **':'**: *indica el comienzo de una nueva expresión*  
  - **else**: *expresión alternativa si la condición es falsa*  
  - **id**: *variable para contener resultados de los operadores*  
- - **n**: *si el nivel indicado es mayor que la profundidad de la estructura receptora, se utiliza el nivel más profundo disponible*
+ - **n**: *numero para indicar cuantas capas internas se debe ingresar*
  - **print**: *imprime en pantalla*
  - **def**: *define una función*
 
+*Tabla TOKEN -> PATRÓN:*
+
+| TOKEN          | PATRÓN   |
+|----------------|----------|
+| CONCATENAR     | +        |
+| ASIGNAR        | =        |
+| PARENT_ABRE    | (        |
+| PARENT_CIERRA  | )        |
+| CONSTANTE      | [1-3]    |
+| IF             | if       |
+| ELSE           | else     |
+| PRINT          | print    |
+| BEGIN          | begin    |
+| END            | end      |
+| DEF            | def      |
+| IN             | in       |
+| ID             | [a-z]+   |
+| SIMBOLO        | :        |
+
+*Diagráma de transiciones:*
+<p align="center">
+  <img src="Automata.png" width="600">
+</p>
+
 ## Especificaciones sintácticas:
 
-> S -> T + S | T in(N) S | T  
-> T -> () | if O then S else S | V = S | V  
-> O -> +  | in  
-> V -> id  
-> N -> n  
+> Prog -> BEGIN ListaSent END 
+> ListaSent -> Sent ListaSent | Sent 
+> Sent -> Asig | Impr | Func 
+> Asig -> ID ASIGNAR Expr 
+> Impr-> PRINT ID
+> Func -> DEF ID SIMBOLO Expr'
+> Expr -> Expr' | IF ID IN ID SIMBOLO Expr' ELSE SIMBOLO Expr' | PARENT_ABRE PARENT_CIERRA
+> Expr' -> ID Oper ID
+> Oper -> CONCATENAR | IN PARENT_ABRE CONSTANTE PARENT_CIERRA
 
 
 ## Especificaciones semánticas:
