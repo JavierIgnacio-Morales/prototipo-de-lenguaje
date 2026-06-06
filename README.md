@@ -31,7 +31,7 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 
 ## ESPECIFICACINES LÉXICAS:
 
-Descripción:
+*Descripción:*
  - **begin**: *comienzo de programa*  
  - **end**: *fin de programa*  
  - **+**: *operador infijo para concatenar A con B*  
@@ -65,11 +65,15 @@ Descripción:
 
 ## Especificaciones sintácticas:
 
-> S -> T + S | T in(N) S | T  
-> T -> () | if O then S else S | V = S | V  
-> O -> +  | in  
-> V -> id  
-> N -> n  
+> Prog -> BEGIN ListaSent END 
+> ListaSent -> Sent ListaSent | Sent 
+> Sent -> Asig | Impr | Func 
+> Asig -> ID ASIGNAR Expr 
+> Impr-> PRINT ID
+> Func -> DEF ID SIMBOLO Expr'
+> Expr -> Expr' | IF ID IN ID SIMBOLO Expr' ELSE SIMBOLO Expr' | PARENT_ABRE PARENT_CIERRA
+> Expr' -> ID Oper ID
+> Oper -> CONCATENAR | IN PARENT_ABRE CONSTANTE PARENT_CIERRA
 
 
 ## Especificaciones semánticas:
