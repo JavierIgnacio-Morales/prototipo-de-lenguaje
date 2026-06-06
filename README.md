@@ -76,6 +76,8 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 
 ## Especificaciones sintácticas:
 
+*Gramática Independiente del Contexto:*
+
 > Prog -> BEGIN ListaSent END  
 > ListaSent -> Sent ListaSent | Sent  
 > Sent -> Asig | Impr | Func  
