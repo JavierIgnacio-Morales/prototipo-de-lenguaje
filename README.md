@@ -76,15 +76,15 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 
 ## Especificaciones sintácticas:
 
-> Prog -> BEGIN ListaSent END 
-> ListaSent -> Sent ListaSent | Sent 
-> Sent -> Asig | Impr | Func 
-> Asig -> ID ASIGNAR Expr 
-> Impr-> PRINT ID
-> Func -> DEF ID SIMBOLO Expr'
-> Expr -> Expr' | IF ID IN ID SIMBOLO Expr' ELSE SIMBOLO Expr' | PARENT_ABRE PARENT_CIERRA
-> Expr' -> ID Oper ID
-> Oper -> CONCATENAR | IN PARENT_ABRE CONSTANTE PARENT_CIERRA
+> Prog -> BEGIN ListaSent END  
+> ListaSent -> Sent ListaSent | Sent  
+> Sent -> Asig | Impr | Func  
+> Asig -> ID ASIGNAR Expr  
+> Impr-> PRINT ID  
+> Func -> DEF ID SIMBOLO Expr'  
+> Expr -> Expr' | IF ID IN ID SIMBOLO Expr' ELSE SIMBOLO Expr' | PARENT_ABRE PARENT_CIERRA  
+> Expr' -> ID Oper ID  
+> Oper -> CONCATENAR | IN PARENT_ABRE CONSTANTE PARENT_CIERRA  
 
 
 ## Especificaciones semánticas:
