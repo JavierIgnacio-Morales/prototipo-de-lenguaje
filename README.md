@@ -76,7 +76,22 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 
 ## Especificaciones sintácticas:
 
-*Gramática Independiente del Contexto:*
+*GIC utilizando terminales:*
+
+> Prog -> begin ListaSent end
+> ListaSent -> Sent ListaSent | Sent
+> Sent -> Asig | Impr | Func
+> Asig -> Iden = Expr
+> Impr-> print Iden
+> Func -> def Iden: Expr'
+> Expr -> Expr' | if Iden in Iden : Expr' else: Expr' | ()
+> Expr' -> Iden Oper Iden
+> Oper -> + | in(Cons)
+> Cons -> 1 | 2 | 3
+> Iden -> Iden' Iden | Iden'
+> Iden'-> a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z  
+
+*GIC utilizando tokens:*
 
 > Prog -> BEGIN ListaSent END  
 > ListaSent -> Sent ListaSent | Sent  
