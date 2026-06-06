@@ -2,7 +2,8 @@ import ply.lex as lex
 
 
 #TOKEN
-tokens=('CONCATENAR','ASIGNAR','PARENT_ABRE','PARENT_CIERRA','CONSTANTE','ID','PALABRA_RESERVADA','SIMBOLO',)
+tokens=('CONCATENAR','ASIGNAR','PARENT_ABRE','PARENT_CIERRA','CONSTANTE','ID','PRINT',
+        'IF','ELSE','BEGIN','END','DEF','IN','SIMBOLO',)
 
 #PATRONES
 t_CONSTANTE = r'1|2|3'
@@ -13,19 +14,18 @@ t_PARENT_CIERRA = r'\)'
 t_SIMBOLO = r':'
 
 LISTAPALABRASRESERVADAS = {
-    'if': 'PALABRA_RESERVADA',
-    'else': 'PALABRA_RESERVADA',
-    'begin': 'PALABRA_RESERVADA',
-    'end': 'PALABRA_RESERVADA',
-    'def': 'PALABRA_RESERVADA',
-    'print': 'PALABRA_RESERVADA',
-    'in': 'PALABRA_RESERVADA'
+    'print' : 'PRINT',
+    'if'    :   'IF',
+    'else'  :   'ELSE',
+    'begin' :   'BEGIN',
+    'end'   :   'END',
+    'def'   :   'DEF',
+    'in'    :   'IN',
 }
 def t_ID(t):
     r'[a-z]+'
     t.type = LISTAPALABRASRESERVADAS.get(t.value, 'ID')
     return t
-
 
 #IGNORAR
 t_ignore = ' \t\n'
@@ -38,7 +38,7 @@ def t_error(t):
 #SCANNER
 lex = lex.lex()
 
-lex.input('a = b in(12) c')
+lex.input('begin a = b in(12) c end')
 
 while 1:
     tok = lex.token()

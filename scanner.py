@@ -9,10 +9,16 @@ class Scanner:
         ':' : 'SIMBOLO',
     }
     ENTERO = "CONSTANTE"
-    IDENTIFICADOR = "L"
-    LISTAPALABRASRESERVADAS =['print', 'end', 'else', 'begin', 'def', 'in', 'if',]
     LISTACONSTANTES =['1', '2', '3',]
-    PALABRARESERVADA = 'PALABRA_RESERVADA'
+    PALABRASRESERVADAS ={
+        'print' : 'PRINT',
+        'if'    :   'IF',
+        'else'  :   'ELSE',
+        'begin' :   'BEGIN',
+        'end'   :   'END',
+        'def'   :   'DEF',
+        'in'    :   'IN',
+    }
     IDENTIFICADOR = 'ID'
 
     def __init__(self, cadena):
@@ -53,15 +59,10 @@ class Scanner:
         return (self.SINRETROCESO[c], c)
     
     def q17(self, c):
-        b = self.getCaracter()
-        if b == ')':
-            self.retroceso()
-            if c in self.LISTACONSTANTES:
-                return (self.ENTERO, c)
-            else:
-                return (self.ERROR, c)
-        return (self.ERROR, c+b)
-        
+        if c in self.LISTACONSTANTES:
+            return (self.ENTERO, c)
+        else:
+            return (self.ERROR, c)
     
     def letra(self):
         c = self.getCaracter()
@@ -69,8 +70,8 @@ class Scanner:
             self.LEXEMA = self.LEXEMA + c
             c = self.getCaracter()
         self.retroceso()
-        if self.LEXEMA in self.LISTAPALABRASRESERVADAS:
-            return (self.PALABRARESERVADA, self.LEXEMA)
+        if self.LEXEMA in self.PALABRASRESERVADAS:
+            return (self.PALABRASRESERVADAS[self.LEXEMA], self.LEXEMA)
         else:
             return (self.IDENTIFICADOR, self.LEXEMA)
   
@@ -78,7 +79,7 @@ class Scanner:
         self.cursor -= 1
 
 
-scanner = Scanner('a = b in(21) c')
+scanner = Scanner('begin a = b in(12) c end')
 
 while scanner.quedanCaracteres():
     token = scanner.q0()

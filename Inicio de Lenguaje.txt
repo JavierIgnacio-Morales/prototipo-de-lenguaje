@@ -9,48 +9,52 @@ Ejemplos inválidos: ))() | (() | ))((
 
 Léxica:
 
-Delimiters: (, )
-Operators: + , in
-Reserved words: if, else, print, begin, end, def// repeat
-Symbol: =, :
-id: (a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z)+
-n: 1 | 2 | 3 
+Definiciones:
 
-+: operador para concatenar ()1 con ()2
-in: operador para introducir ()1 en ()2
-if: condición para concatenar o introducir,
-else: hacer otra cosa,
++: operador infijo para concatenar ()1 con ()2
+in: operador infijo para introducir ()1 en ()2 o operador booleano para el condicional si ()1 esta incluido en ()2
+if: condicional para evaluar una condición de pertenencia
+else: expresión alternativa si la condición es falsa
 =: símbolo de asignación
 id: variable para contener resultados de los operadores
 n: numero para indicar cuantas capas internas se debe ingresar
 print: imprime en pantalla
-begin: comienzo
-end: final
-def: función
+begin: comienzo del programa
+end: fin del programa
+def: define una función para reutilizar operaciones de concatenación o inclusión entre estructuras.
+
+TOKEN		PATRON
+
+CONCATENAR	+
+ASIGNAR		=
+PARENT_ABRE	(
+PARENT_CIERRA	)
+CONSTANTE	[1-3]
+IF		if
+ELSE		else
+PRINT		print
+BEGIN		begin
+END		end
+DEF		def
+IN		in
+ID		[a-z]+
+SIMBOLO		:
+
+
 -----------------------------------------------
 
 Sintáctica:
 
-Program -> begin S end
-S -> T + S | T in(N) S | T
-T ->  () | print S | if S in S: S else: S | def V: S | V() | V = S | V  //| repeat N: S
-V -> id
-N -> n
-
-
-Prog -> begin ListaSent end 
+GIC
+Prog -> BEGIN ListaSent END 
 ListaSent -> Sent ListaSent | Sent 
 Sent -> Asig | Impr | Func 
-Asig -> Iden = Expr 
-Impr-> print Iden 
-Func -> def Iden: Expr' 
-Expr -> Expr' | if Iden in Iden : Expr' else: Expr' | ()
-Expr' -> Iden Oper Iden 
-Oper -> + | in(Cons) | in 
-Cons -> 1 | 2 | 3 | 4 | 5 
-Iden -> a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | 
-	a Iden | b Iden | c Iden | d Iden | e Iden | f Iden | g Iden | h Iden | i Iden | j Iden | k Iden | l Iden | m Iden |
-	 n Iden | o Iden | p Iden | q Iden | r Iden | s Iden | t Iden | u Iden | v Iden | w Iden | x Iden | y Iden | z Iden
+Asig -> ID ASIGNAR Expr 
+Impr-> PRINT ID
+Func -> DEF ID SIMBOLO Expr' 
+Expr -> Expr' | IF ID IN ID SIMBOLO Expr' ELSE SIMBOLO Expr' | PARENT_ABRE PARENT_CIERRA
+Expr' -> ID Oper ID 
+Oper -> CONCATENAR | IN PARENT_ABRE CONSTANTE PARENT_CIERRA
 
 ------------------------------------------------
 
