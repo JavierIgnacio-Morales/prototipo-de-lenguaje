@@ -1,0 +1,407 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> Prog
+Rule 1     Prog -> BEGIN ListaSent END
+Rule 2     ListaSent -> Sent ListaSent
+Rule 3     ListaSent -> Sent
+Rule 4     Sent -> Asig
+Rule 5     Sent -> Impr
+Rule 6     Sent -> Func
+Rule 7     Asig -> ID ASIGNAR Expr
+Rule 8     Impr -> PRINT ID
+Rule 9     Func -> DEF ID SIMBOLO Exprt
+Rule 10    Expr -> Exprt
+Rule 11    Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt
+Rule 12    Expr -> PARENT_ABRE PARENT_CIERRA
+Rule 13    Exprt -> ID Oper ID
+Rule 14    Oper -> CONCATENAR
+Rule 15    Oper -> IN PARENT_ABRE CONSTANTE PARENT_CIERRA
+
+Terminals, with rules where they appear
+
+ASIGNAR              : 7
+BEGIN                : 1
+CONCATENAR           : 14
+CONSTANTE            : 15
+DEF                  : 9
+ELSE                 : 11
+END                  : 1
+ID                   : 7 8 9 11 11 13 13
+IF                   : 11
+IN                   : 11 15
+PARENT_ABRE          : 12 15
+PARENT_CIERRA        : 12 15
+PRINT                : 8
+SIMBOLO              : 9 11 11
+error                : 
+
+Nonterminals, with rules where they appear
+
+Asig                 : 4
+Expr                 : 7
+Exprt                : 9 10 11 11
+Func                 : 6
+Impr                 : 5
+ListaSent            : 1 2
+Oper                 : 13
+Prog                 : 0
+Sent                 : 2 3
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . Prog
+    (1) Prog -> . BEGIN ListaSent END
+
+    BEGIN           shift and go to state 2
+
+    Prog                           shift and go to state 1
+
+state 1
+
+    (0) S' -> Prog .
+
+
+
+state 2
+
+    (1) Prog -> BEGIN . ListaSent END
+    (2) ListaSent -> . Sent ListaSent
+    (3) ListaSent -> . Sent
+    (4) Sent -> . Asig
+    (5) Sent -> . Impr
+    (6) Sent -> . Func
+    (7) Asig -> . ID ASIGNAR Expr
+    (8) Impr -> . PRINT ID
+    (9) Func -> . DEF ID SIMBOLO Exprt
+
+    ID              shift and go to state 8
+    PRINT           shift and go to state 9
+    DEF             shift and go to state 10
+
+    ListaSent                      shift and go to state 3
+    Sent                           shift and go to state 4
+    Asig                           shift and go to state 5
+    Impr                           shift and go to state 6
+    Func                           shift and go to state 7
+
+state 3
+
+    (1) Prog -> BEGIN ListaSent . END
+
+    END             shift and go to state 11
+
+
+state 4
+
+    (2) ListaSent -> Sent . ListaSent
+    (3) ListaSent -> Sent .
+    (2) ListaSent -> . Sent ListaSent
+    (3) ListaSent -> . Sent
+    (4) Sent -> . Asig
+    (5) Sent -> . Impr
+    (6) Sent -> . Func
+    (7) Asig -> . ID ASIGNAR Expr
+    (8) Impr -> . PRINT ID
+    (9) Func -> . DEF ID SIMBOLO Exprt
+
+    END             reduce using rule 3 (ListaSent -> Sent .)
+    ID              shift and go to state 8
+    PRINT           shift and go to state 9
+    DEF             shift and go to state 10
+
+    Sent                           shift and go to state 4
+    ListaSent                      shift and go to state 12
+    Asig                           shift and go to state 5
+    Impr                           shift and go to state 6
+    Func                           shift and go to state 7
+
+state 5
+
+    (4) Sent -> Asig .
+
+    ID              reduce using rule 4 (Sent -> Asig .)
+    PRINT           reduce using rule 4 (Sent -> Asig .)
+    DEF             reduce using rule 4 (Sent -> Asig .)
+    END             reduce using rule 4 (Sent -> Asig .)
+
+
+state 6
+
+    (5) Sent -> Impr .
+
+    ID              reduce using rule 5 (Sent -> Impr .)
+    PRINT           reduce using rule 5 (Sent -> Impr .)
+    DEF             reduce using rule 5 (Sent -> Impr .)
+    END             reduce using rule 5 (Sent -> Impr .)
+
+
+state 7
+
+    (6) Sent -> Func .
+
+    ID              reduce using rule 6 (Sent -> Func .)
+    PRINT           reduce using rule 6 (Sent -> Func .)
+    DEF             reduce using rule 6 (Sent -> Func .)
+    END             reduce using rule 6 (Sent -> Func .)
+
+
+state 8
+
+    (7) Asig -> ID . ASIGNAR Expr
+
+    ASIGNAR         shift and go to state 13
+
+
+state 9
+
+    (8) Impr -> PRINT . ID
+
+    ID              shift and go to state 14
+
+
+state 10
+
+    (9) Func -> DEF . ID SIMBOLO Exprt
+
+    ID              shift and go to state 15
+
+
+state 11
+
+    (1) Prog -> BEGIN ListaSent END .
+
+    $end            reduce using rule 1 (Prog -> BEGIN ListaSent END .)
+
+
+state 12
+
+    (2) ListaSent -> Sent ListaSent .
+
+    END             reduce using rule 2 (ListaSent -> Sent ListaSent .)
+
+
+state 13
+
+    (7) Asig -> ID ASIGNAR . Expr
+    (10) Expr -> . Exprt
+    (11) Expr -> . IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt
+    (12) Expr -> . PARENT_ABRE PARENT_CIERRA
+    (13) Exprt -> . ID Oper ID
+
+    IF              shift and go to state 19
+    PARENT_ABRE     shift and go to state 20
+    ID              shift and go to state 16
+
+    Expr                           shift and go to state 17
+    Exprt                          shift and go to state 18
+
+state 14
+
+    (8) Impr -> PRINT ID .
+
+    ID              reduce using rule 8 (Impr -> PRINT ID .)
+    PRINT           reduce using rule 8 (Impr -> PRINT ID .)
+    DEF             reduce using rule 8 (Impr -> PRINT ID .)
+    END             reduce using rule 8 (Impr -> PRINT ID .)
+
+
+state 15
+
+    (9) Func -> DEF ID . SIMBOLO Exprt
+
+    SIMBOLO         shift and go to state 21
+
+
+state 16
+
+    (13) Exprt -> ID . Oper ID
+    (14) Oper -> . CONCATENAR
+    (15) Oper -> . IN PARENT_ABRE CONSTANTE PARENT_CIERRA
+
+    CONCATENAR      shift and go to state 23
+    IN              shift and go to state 24
+
+    Oper                           shift and go to state 22
+
+state 17
+
+    (7) Asig -> ID ASIGNAR Expr .
+
+    ID              reduce using rule 7 (Asig -> ID ASIGNAR Expr .)
+    PRINT           reduce using rule 7 (Asig -> ID ASIGNAR Expr .)
+    DEF             reduce using rule 7 (Asig -> ID ASIGNAR Expr .)
+    END             reduce using rule 7 (Asig -> ID ASIGNAR Expr .)
+
+
+state 18
+
+    (10) Expr -> Exprt .
+
+    ID              reduce using rule 10 (Expr -> Exprt .)
+    PRINT           reduce using rule 10 (Expr -> Exprt .)
+    DEF             reduce using rule 10 (Expr -> Exprt .)
+    END             reduce using rule 10 (Expr -> Exprt .)
+
+
+state 19
+
+    (11) Expr -> IF . ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt
+
+    ID              shift and go to state 25
+
+
+state 20
+
+    (12) Expr -> PARENT_ABRE . PARENT_CIERRA
+
+    PARENT_CIERRA   shift and go to state 26
+
+
+state 21
+
+    (9) Func -> DEF ID SIMBOLO . Exprt
+    (13) Exprt -> . ID Oper ID
+
+    ID              shift and go to state 16
+
+    Exprt                          shift and go to state 27
+
+state 22
+
+    (13) Exprt -> ID Oper . ID
+
+    ID              shift and go to state 28
+
+
+state 23
+
+    (14) Oper -> CONCATENAR .
+
+    ID              reduce using rule 14 (Oper -> CONCATENAR .)
+
+
+state 24
+
+    (15) Oper -> IN . PARENT_ABRE CONSTANTE PARENT_CIERRA
+
+    PARENT_ABRE     shift and go to state 29
+
+
+state 25
+
+    (11) Expr -> IF ID . IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt
+
+    IN              shift and go to state 30
+
+
+state 26
+
+    (12) Expr -> PARENT_ABRE PARENT_CIERRA .
+
+    ID              reduce using rule 12 (Expr -> PARENT_ABRE PARENT_CIERRA .)
+    PRINT           reduce using rule 12 (Expr -> PARENT_ABRE PARENT_CIERRA .)
+    DEF             reduce using rule 12 (Expr -> PARENT_ABRE PARENT_CIERRA .)
+    END             reduce using rule 12 (Expr -> PARENT_ABRE PARENT_CIERRA .)
+
+
+state 27
+
+    (9) Func -> DEF ID SIMBOLO Exprt .
+
+    ID              reduce using rule 9 (Func -> DEF ID SIMBOLO Exprt .)
+    PRINT           reduce using rule 9 (Func -> DEF ID SIMBOLO Exprt .)
+    DEF             reduce using rule 9 (Func -> DEF ID SIMBOLO Exprt .)
+    END             reduce using rule 9 (Func -> DEF ID SIMBOLO Exprt .)
+
+
+state 28
+
+    (13) Exprt -> ID Oper ID .
+
+    ID              reduce using rule 13 (Exprt -> ID Oper ID .)
+    PRINT           reduce using rule 13 (Exprt -> ID Oper ID .)
+    DEF             reduce using rule 13 (Exprt -> ID Oper ID .)
+    END             reduce using rule 13 (Exprt -> ID Oper ID .)
+    ELSE            reduce using rule 13 (Exprt -> ID Oper ID .)
+
+
+state 29
+
+    (15) Oper -> IN PARENT_ABRE . CONSTANTE PARENT_CIERRA
+
+    CONSTANTE       shift and go to state 31
+
+
+state 30
+
+    (11) Expr -> IF ID IN . ID SIMBOLO Exprt ELSE SIMBOLO Exprt
+
+    ID              shift and go to state 32
+
+
+state 31
+
+    (15) Oper -> IN PARENT_ABRE CONSTANTE . PARENT_CIERRA
+
+    PARENT_CIERRA   shift and go to state 33
+
+
+state 32
+
+    (11) Expr -> IF ID IN ID . SIMBOLO Exprt ELSE SIMBOLO Exprt
+
+    SIMBOLO         shift and go to state 34
+
+
+state 33
+
+    (15) Oper -> IN PARENT_ABRE CONSTANTE PARENT_CIERRA .
+
+    ID              reduce using rule 15 (Oper -> IN PARENT_ABRE CONSTANTE PARENT_CIERRA .)
+
+
+state 34
+
+    (11) Expr -> IF ID IN ID SIMBOLO . Exprt ELSE SIMBOLO Exprt
+    (13) Exprt -> . ID Oper ID
+
+    ID              shift and go to state 16
+
+    Exprt                          shift and go to state 35
+
+state 35
+
+    (11) Expr -> IF ID IN ID SIMBOLO Exprt . ELSE SIMBOLO Exprt
+
+    ELSE            shift and go to state 36
+
+
+state 36
+
+    (11) Expr -> IF ID IN ID SIMBOLO Exprt ELSE . SIMBOLO Exprt
+
+    SIMBOLO         shift and go to state 37
+
+
+state 37
+
+    (11) Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO . Exprt
+    (13) Exprt -> . ID Oper ID
+
+    ID              shift and go to state 16
+
+    Exprt                          shift and go to state 38
+
+state 38
+
+    (11) Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt .
+
+    ID              reduce using rule 11 (Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt .)
+    PRINT           reduce using rule 11 (Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt .)
+    DEF             reduce using rule 11 (Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt .)
+    END             reduce using rule 11 (Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt .)
+

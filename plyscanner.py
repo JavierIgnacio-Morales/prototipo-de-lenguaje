@@ -36,11 +36,11 @@ def t_error(t):
     t.lexer.skip(1)
 
 #SCANNER
-lex = lex.lex()
+lexer = lex.lex()
 
-lex.input('begin a = b in(12) c end')
+# lex.input('begin a = b in(12) c end')
 
-while 1:
-    tok = lex.token()
-    if not tok: break
-    print(tok)
+# while 1:
+#     tok = lex.token()
+#     if not tok: break
+#     print(tok)
