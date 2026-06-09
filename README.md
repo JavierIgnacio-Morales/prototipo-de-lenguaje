@@ -98,9 +98,9 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 > Sent -> Asig | Impr | Func  
 > Asig -> ID ASIGNAR Expr  
 > Impr-> PRINT ID  
-> Func -> DEF ID SIMBOLO Expr'  
-> Expr -> Expr' | IF ID IN ID SIMBOLO Expr' ELSE SIMBOLO Expr' | PARENT_ABRE PARENT_CIERRA  
-> Expr' -> ID Oper ID  
+> Func -> DEF ID SIMBOLO Exprt  
+> Expr -> Exprt | IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt | PARENT_ABRE PARENT_CIERRA  
+> Exprt -> ID Oper ID  
 > Oper -> CONCATENAR | IN PARENT_ABRE CONSTANTE PARENT_CIERRA  
 
 
