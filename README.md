@@ -84,7 +84,7 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 > Asig -> Iden = Expr  
 > Impr-> print Iden  
 > Func -> def Iden: Expr'  
-> Expr -> Expr' | if Iden in Iden : Expr' else: Expr' | ()  
+> Expr -> Expr' | if Iden in Iden : Expr' else: Expr' | ()  | Iden()  
 > Expr' -> Iden Oper Iden  
 > Oper -> + | in(Cons)  
 > Cons -> 1 | 2 | 3  
@@ -99,7 +99,7 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 > Asig -> ID ASIGNAR Expr  
 > Impr-> PRINT ID  
 > Func -> DEF ID SIMBOLO Exprt  
-> Expr -> Exprt | IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt | PARENT_ABRE PARENT_CIERRA  
+> Expr -> Exprt | IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt | PARENT_ABRE PARENT_CIERRA  | ID PARENT_ABRE CONSTANTE PARENT_CIERRA  
 > Exprt -> ID Oper ID  
 > Oper -> CONCATENAR | IN PARENT_ABRE CONSTANTE PARENT_CIERRA  
 
