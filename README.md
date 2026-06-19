@@ -125,25 +125,15 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 *Si se quisiera programar (()())(()(()))*  
  
 ```  
-begin
-
+begin 
 a = ()
 b = a + a
-c = b in a
-
-c // contiene (()())
-
---------------
-e = a in a
+c = b in(1) a
+e = a in(1) a
 f = a + e
-g = f in a
-
-g // contiene (()(()))
---------------
+g = f in(1) a
 h = c + g
-
-print h // muestra en pantalla (()())(()(()))
-
+print h
 end
 ```  
 
