@@ -85,7 +85,8 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 > Impr-> print Iden  
 > Func -> def Iden: Expr'  
 > Expr -> Expr' | if Iden in Iden : Expr' else: Expr' | () | Iden()  
-> Expr' -> Iden Oper Iden | Iden() Oper Iden()  
+> Expr' -> Valor Oper Valor
+> Valor -> Iden | Iden()   
 > Oper -> + | in(Cons)  
 > Cons -> 1 | 2 | 3  
 > Iden -> Iden' Iden | Iden'  
