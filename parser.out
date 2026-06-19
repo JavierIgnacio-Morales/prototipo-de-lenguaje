@@ -12,43 +12,46 @@ Rule 6     Sent -> Func
 Rule 7     Asig -> ID ASIGNAR Expr
 Rule 8     Impr -> PRINT ID
 Rule 9     Func -> DEF ID SIMBOLO Exprt
-Rule 10    Expr -> Exprt
-Rule 11    Exprt -> ID Oper ID
-Rule 12    Oper -> CONCATENAR
-Rule 13    Oper -> IN PARENT_ABRE CONSTANTE PARENT_CIERRA
-Rule 14    Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt
-Rule 15    Expr -> PARENT_ABRE PARENT_CIERRA
-Rule 16    Expr -> ID PARENT_ABRE PARENT_CIERRA
+Rule 10    Expr -> PARENT_ABRE PARENT_CIERRA
+Rule 11    Expr -> Exprt
+Rule 12    Exprt -> Valor Oper Valor
+Rule 13    Valor -> ID
+Rule 14    Valor -> ID PARENT_ABRE PARENT_CIERRA
+Rule 15    Oper -> CONCATENAR
+Rule 16    Oper -> IN PARENT_ABRE CONSTANTE PARENT_CIERRA
+Rule 17    Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt
+Rule 18    Expr -> ID PARENT_ABRE PARENT_CIERRA
 
 Terminals, with rules where they appear
 
 ASIGNAR              : 7
 BEGIN                : 1
-CONCATENAR           : 12
-CONSTANTE            : 13
+CONCATENAR           : 15
+CONSTANTE            : 16
 DEF                  : 9
-ELSE                 : 14
+ELSE                 : 17
 END                  : 1
-ID                   : 7 8 9 11 11 14 14 16
-IF                   : 14
-IN                   : 13 14
-PARENT_ABRE          : 13 15 16
-PARENT_CIERRA        : 13 15 16
+ID                   : 7 8 9 13 14 17 17 18
+IF                   : 17
+IN                   : 16 17
+PARENT_ABRE          : 10 14 16 18
+PARENT_CIERRA        : 10 14 16 18
 PRINT                : 8
-SIMBOLO              : 9 14 14
+SIMBOLO              : 9 17 17
 error                : 
 
 Nonterminals, with rules where they appear
 
 Asig                 : 4
 Expr                 : 7
-Exprt                : 9 10 14 14
+Exprt                : 9 11 17 17
 Func                 : 6
 Impr                 : 5
 ListaSent            : 1 2
-Oper                 : 11
+Oper                 : 12
 Prog                 : 0
 Sent                 : 2 3
+Valor                : 12 12
 
 Parsing method: LALR
 
@@ -188,18 +191,21 @@ state 12
 state 13
 
     (7) Asig -> ID ASIGNAR . Expr
-    (10) Expr -> . Exprt
-    (14) Expr -> . IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt
-    (15) Expr -> . PARENT_ABRE PARENT_CIERRA
-    (16) Expr -> . ID PARENT_ABRE PARENT_CIERRA
-    (11) Exprt -> . ID Oper ID
+    (10) Expr -> . PARENT_ABRE PARENT_CIERRA
+    (11) Expr -> . Exprt
+    (17) Expr -> . IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt
+    (18) Expr -> . ID PARENT_ABRE PARENT_CIERRA
+    (12) Exprt -> . Valor Oper Valor
+    (13) Valor -> . ID
+    (14) Valor -> . ID PARENT_ABRE PARENT_CIERRA
 
-    IF              shift and go to state 19
-    PARENT_ABRE     shift and go to state 20
+    PARENT_ABRE     shift and go to state 18
+    IF              shift and go to state 20
     ID              shift and go to state 16
 
     Expr                           shift and go to state 17
-    Exprt                          shift and go to state 18
+    Exprt                          shift and go to state 19
+    Valor                          shift and go to state 21
 
 state 14
 
@@ -215,21 +221,19 @@ state 15
 
     (9) Func -> DEF ID . SIMBOLO Exprt
 
-    SIMBOLO         shift and go to state 21
+    SIMBOLO         shift and go to state 22
 
 
 state 16
 
-    (16) Expr -> ID . PARENT_ABRE PARENT_CIERRA
-    (11) Exprt -> ID . Oper ID
-    (12) Oper -> . CONCATENAR
-    (13) Oper -> . IN PARENT_ABRE CONSTANTE PARENT_CIERRA
+    (18) Expr -> ID . PARENT_ABRE PARENT_CIERRA
+    (13) Valor -> ID .
+    (14) Valor -> ID . PARENT_ABRE PARENT_CIERRA
 
-    PARENT_ABRE     shift and go to state 22
-    CONCATENAR      shift and go to state 24
-    IN              shift and go to state 25
+    PARENT_ABRE     shift and go to state 23
+    CONCATENAR      reduce using rule 13 (Valor -> ID .)
+    IN              reduce using rule 13 (Valor -> ID .)
 
-    Oper                           shift and go to state 23
 
 state 17
 
@@ -243,94 +247,116 @@ state 17
 
 state 18
 
-    (10) Expr -> Exprt .
+    (10) Expr -> PARENT_ABRE . PARENT_CIERRA
 
-    ID              reduce using rule 10 (Expr -> Exprt .)
-    PRINT           reduce using rule 10 (Expr -> Exprt .)
-    DEF             reduce using rule 10 (Expr -> Exprt .)
-    END             reduce using rule 10 (Expr -> Exprt .)
+    PARENT_CIERRA   shift and go to state 24
 
 
 state 19
 
-    (14) Expr -> IF . ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt
+    (11) Expr -> Exprt .
 
-    ID              shift and go to state 26
+    ID              reduce using rule 11 (Expr -> Exprt .)
+    PRINT           reduce using rule 11 (Expr -> Exprt .)
+    DEF             reduce using rule 11 (Expr -> Exprt .)
+    END             reduce using rule 11 (Expr -> Exprt .)
 
 
 state 20
 
-    (15) Expr -> PARENT_ABRE . PARENT_CIERRA
+    (17) Expr -> IF . ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt
 
-    PARENT_CIERRA   shift and go to state 27
+    ID              shift and go to state 25
 
 
 state 21
 
-    (9) Func -> DEF ID SIMBOLO . Exprt
-    (11) Exprt -> . ID Oper ID
+    (12) Exprt -> Valor . Oper Valor
+    (15) Oper -> . CONCATENAR
+    (16) Oper -> . IN PARENT_ABRE CONSTANTE PARENT_CIERRA
 
-    ID              shift and go to state 28
+    CONCATENAR      shift and go to state 27
+    IN              shift and go to state 28
 
-    Exprt                          shift and go to state 29
+    Oper                           shift and go to state 26
 
 state 22
 
-    (16) Expr -> ID PARENT_ABRE . PARENT_CIERRA
+    (9) Func -> DEF ID SIMBOLO . Exprt
+    (12) Exprt -> . Valor Oper Valor
+    (13) Valor -> . ID
+    (14) Valor -> . ID PARENT_ABRE PARENT_CIERRA
 
-    PARENT_CIERRA   shift and go to state 30
+    ID              shift and go to state 29
 
+    Exprt                          shift and go to state 30
+    Valor                          shift and go to state 21
 
 state 23
 
-    (11) Exprt -> ID Oper . ID
+    (18) Expr -> ID PARENT_ABRE . PARENT_CIERRA
+    (14) Valor -> ID PARENT_ABRE . PARENT_CIERRA
 
-    ID              shift and go to state 31
+    PARENT_CIERRA   shift and go to state 31
 
 
 state 24
 
-    (12) Oper -> CONCATENAR .
+    (10) Expr -> PARENT_ABRE PARENT_CIERRA .
 
-    ID              reduce using rule 12 (Oper -> CONCATENAR .)
+    ID              reduce using rule 10 (Expr -> PARENT_ABRE PARENT_CIERRA .)
+    PRINT           reduce using rule 10 (Expr -> PARENT_ABRE PARENT_CIERRA .)
+    DEF             reduce using rule 10 (Expr -> PARENT_ABRE PARENT_CIERRA .)
+    END             reduce using rule 10 (Expr -> PARENT_ABRE PARENT_CIERRA .)
 
 
 state 25
 
-    (13) Oper -> IN . PARENT_ABRE CONSTANTE PARENT_CIERRA
+    (17) Expr -> IF ID . IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt
 
-    PARENT_ABRE     shift and go to state 32
+    IN              shift and go to state 32
 
 
 state 26
 
-    (14) Expr -> IF ID . IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt
+    (12) Exprt -> Valor Oper . Valor
+    (13) Valor -> . ID
+    (14) Valor -> . ID PARENT_ABRE PARENT_CIERRA
 
-    IN              shift and go to state 33
+    ID              shift and go to state 29
 
+    Valor                          shift and go to state 33
 
 state 27
 
-    (15) Expr -> PARENT_ABRE PARENT_CIERRA .
+    (15) Oper -> CONCATENAR .
 
-    ID              reduce using rule 15 (Expr -> PARENT_ABRE PARENT_CIERRA .)
-    PRINT           reduce using rule 15 (Expr -> PARENT_ABRE PARENT_CIERRA .)
-    DEF             reduce using rule 15 (Expr -> PARENT_ABRE PARENT_CIERRA .)
-    END             reduce using rule 15 (Expr -> PARENT_ABRE PARENT_CIERRA .)
+    ID              reduce using rule 15 (Oper -> CONCATENAR .)
 
 
 state 28
 
-    (11) Exprt -> ID . Oper ID
-    (12) Oper -> . CONCATENAR
-    (13) Oper -> . IN PARENT_ABRE CONSTANTE PARENT_CIERRA
+    (16) Oper -> IN . PARENT_ABRE CONSTANTE PARENT_CIERRA
 
-    CONCATENAR      shift and go to state 24
-    IN              shift and go to state 25
+    PARENT_ABRE     shift and go to state 34
 
-    Oper                           shift and go to state 23
 
 state 29
+
+    (13) Valor -> ID .
+    (14) Valor -> ID . PARENT_ABRE PARENT_CIERRA
+
+    CONCATENAR      reduce using rule 13 (Valor -> ID .)
+    IN              reduce using rule 13 (Valor -> ID .)
+    ID              reduce using rule 13 (Valor -> ID .)
+    PRINT           reduce using rule 13 (Valor -> ID .)
+    DEF             reduce using rule 13 (Valor -> ID .)
+    END             reduce using rule 13 (Valor -> ID .)
+    ELSE            reduce using rule 13 (Valor -> ID .)
+    PARENT_ABRE     shift and go to state 35
+
+
+state 30
 
     (9) Func -> DEF ID SIMBOLO Exprt .
 
@@ -340,100 +366,129 @@ state 29
     END             reduce using rule 9 (Func -> DEF ID SIMBOLO Exprt .)
 
 
-state 30
-
-    (16) Expr -> ID PARENT_ABRE PARENT_CIERRA .
-
-    ID              reduce using rule 16 (Expr -> ID PARENT_ABRE PARENT_CIERRA .)
-    PRINT           reduce using rule 16 (Expr -> ID PARENT_ABRE PARENT_CIERRA .)
-    DEF             reduce using rule 16 (Expr -> ID PARENT_ABRE PARENT_CIERRA .)
-    END             reduce using rule 16 (Expr -> ID PARENT_ABRE PARENT_CIERRA .)
-
-
 state 31
 
-    (11) Exprt -> ID Oper ID .
+    (18) Expr -> ID PARENT_ABRE PARENT_CIERRA .
+    (14) Valor -> ID PARENT_ABRE PARENT_CIERRA .
 
-    ID              reduce using rule 11 (Exprt -> ID Oper ID .)
-    PRINT           reduce using rule 11 (Exprt -> ID Oper ID .)
-    DEF             reduce using rule 11 (Exprt -> ID Oper ID .)
-    END             reduce using rule 11 (Exprt -> ID Oper ID .)
-    ELSE            reduce using rule 11 (Exprt -> ID Oper ID .)
+    ID              reduce using rule 18 (Expr -> ID PARENT_ABRE PARENT_CIERRA .)
+    PRINT           reduce using rule 18 (Expr -> ID PARENT_ABRE PARENT_CIERRA .)
+    DEF             reduce using rule 18 (Expr -> ID PARENT_ABRE PARENT_CIERRA .)
+    END             reduce using rule 18 (Expr -> ID PARENT_ABRE PARENT_CIERRA .)
+    CONCATENAR      reduce using rule 14 (Valor -> ID PARENT_ABRE PARENT_CIERRA .)
+    IN              reduce using rule 14 (Valor -> ID PARENT_ABRE PARENT_CIERRA .)
 
 
 state 32
 
-    (13) Oper -> IN PARENT_ABRE . CONSTANTE PARENT_CIERRA
+    (17) Expr -> IF ID IN . ID SIMBOLO Exprt ELSE SIMBOLO Exprt
 
-    CONSTANTE       shift and go to state 34
+    ID              shift and go to state 36
 
 
 state 33
 
-    (14) Expr -> IF ID IN . ID SIMBOLO Exprt ELSE SIMBOLO Exprt
+    (12) Exprt -> Valor Oper Valor .
 
-    ID              shift and go to state 35
+    ID              reduce using rule 12 (Exprt -> Valor Oper Valor .)
+    PRINT           reduce using rule 12 (Exprt -> Valor Oper Valor .)
+    DEF             reduce using rule 12 (Exprt -> Valor Oper Valor .)
+    END             reduce using rule 12 (Exprt -> Valor Oper Valor .)
+    ELSE            reduce using rule 12 (Exprt -> Valor Oper Valor .)
 
 
 state 34
 
-    (13) Oper -> IN PARENT_ABRE CONSTANTE . PARENT_CIERRA
+    (16) Oper -> IN PARENT_ABRE . CONSTANTE PARENT_CIERRA
 
-    PARENT_CIERRA   shift and go to state 36
+    CONSTANTE       shift and go to state 37
 
 
 state 35
 
-    (14) Expr -> IF ID IN ID . SIMBOLO Exprt ELSE SIMBOLO Exprt
+    (14) Valor -> ID PARENT_ABRE . PARENT_CIERRA
 
-    SIMBOLO         shift and go to state 37
+    PARENT_CIERRA   shift and go to state 38
 
 
 state 36
 
-    (13) Oper -> IN PARENT_ABRE CONSTANTE PARENT_CIERRA .
+    (17) Expr -> IF ID IN ID . SIMBOLO Exprt ELSE SIMBOLO Exprt
 
-    ID              reduce using rule 13 (Oper -> IN PARENT_ABRE CONSTANTE PARENT_CIERRA .)
+    SIMBOLO         shift and go to state 39
 
 
 state 37
 
-    (14) Expr -> IF ID IN ID SIMBOLO . Exprt ELSE SIMBOLO Exprt
-    (11) Exprt -> . ID Oper ID
+    (16) Oper -> IN PARENT_ABRE CONSTANTE . PARENT_CIERRA
 
-    ID              shift and go to state 28
+    PARENT_CIERRA   shift and go to state 40
 
-    Exprt                          shift and go to state 38
 
 state 38
 
-    (14) Expr -> IF ID IN ID SIMBOLO Exprt . ELSE SIMBOLO Exprt
+    (14) Valor -> ID PARENT_ABRE PARENT_CIERRA .
 
-    ELSE            shift and go to state 39
+    CONCATENAR      reduce using rule 14 (Valor -> ID PARENT_ABRE PARENT_CIERRA .)
+    IN              reduce using rule 14 (Valor -> ID PARENT_ABRE PARENT_CIERRA .)
+    ID              reduce using rule 14 (Valor -> ID PARENT_ABRE PARENT_CIERRA .)
+    PRINT           reduce using rule 14 (Valor -> ID PARENT_ABRE PARENT_CIERRA .)
+    DEF             reduce using rule 14 (Valor -> ID PARENT_ABRE PARENT_CIERRA .)
+    END             reduce using rule 14 (Valor -> ID PARENT_ABRE PARENT_CIERRA .)
+    ELSE            reduce using rule 14 (Valor -> ID PARENT_ABRE PARENT_CIERRA .)
 
 
 state 39
 
-    (14) Expr -> IF ID IN ID SIMBOLO Exprt ELSE . SIMBOLO Exprt
+    (17) Expr -> IF ID IN ID SIMBOLO . Exprt ELSE SIMBOLO Exprt
+    (12) Exprt -> . Valor Oper Valor
+    (13) Valor -> . ID
+    (14) Valor -> . ID PARENT_ABRE PARENT_CIERRA
 
-    SIMBOLO         shift and go to state 40
+    ID              shift and go to state 29
 
+    Exprt                          shift and go to state 41
+    Valor                          shift and go to state 21
 
 state 40
 
-    (14) Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO . Exprt
-    (11) Exprt -> . ID Oper ID
+    (16) Oper -> IN PARENT_ABRE CONSTANTE PARENT_CIERRA .
 
-    ID              shift and go to state 28
+    ID              reduce using rule 16 (Oper -> IN PARENT_ABRE CONSTANTE PARENT_CIERRA .)
 
-    Exprt                          shift and go to state 41
 
 state 41
 
-    (14) Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt .
+    (17) Expr -> IF ID IN ID SIMBOLO Exprt . ELSE SIMBOLO Exprt
 
-    ID              reduce using rule 14 (Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt .)
-    PRINT           reduce using rule 14 (Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt .)
-    DEF             reduce using rule 14 (Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt .)
-    END             reduce using rule 14 (Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt .)
+    ELSE            shift and go to state 42
+
+
+state 42
+
+    (17) Expr -> IF ID IN ID SIMBOLO Exprt ELSE . SIMBOLO Exprt
+
+    SIMBOLO         shift and go to state 43
+
+
+state 43
+
+    (17) Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO . Exprt
+    (12) Exprt -> . Valor Oper Valor
+    (13) Valor -> . ID
+    (14) Valor -> . ID PARENT_ABRE PARENT_CIERRA
+
+    ID              shift and go to state 29
+
+    Exprt                          shift and go to state 44
+    Valor                          shift and go to state 21
+
+state 44
+
+    (17) Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt .
+
+    ID              reduce using rule 17 (Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt .)
+    PRINT           reduce using rule 17 (Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt .)
+    DEF             reduce using rule 17 (Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt .)
+    END             reduce using rule 17 (Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt .)
 

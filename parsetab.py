@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'ASIGNAR BEGIN CONCATENAR CONSTANTE DEF ELSE END ID IF IN PARENT_ABRE PARENT_CIERRA PRINT SIMBOLOProg : BEGIN ListaSent ENDListaSent   : Sent ListaSent \n| SentSent    : Asig \n| Impr \n| FuncAsig : ID ASIGNAR ExprImpr : PRINT IDFunc : DEF ID SIMBOLO ExprtExpr    : ExprtExprt : ID Oper IDOper : CONCATENAROper : IN PARENT_ABRE CONSTANTE PARENT_CIERRAExpr : IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO ExprtExpr : PARENT_ABRE PARENT_CIERRAExpr : ID PARENT_ABRE PARENT_CIERRA'
+_lr_signature = 'ASIGNAR BEGIN CONCATENAR CONSTANTE DEF ELSE END ID IF IN PARENT_ABRE PARENT_CIERRA PRINT SIMBOLOProg : BEGIN ListaSent ENDListaSent   : Sent ListaSent \n| SentSent    : Asig \n| Impr \n| FuncAsig : ID ASIGNAR ExprImpr : PRINT IDFunc : DEF ID SIMBOLO ExprtExpr : PARENT_ABRE PARENT_CIERRAExpr : ExprtExprt : Valor Oper ValorValor : IDValor : ID PARENT_ABRE PARENT_CIERRAOper : CONCATENAROper : IN PARENT_ABRE CONSTANTE PARENT_CIERRAExpr : IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO ExprtExpr : ID PARENT_ABRE PARENT_CIERRA'
     
-_lr_action_items = {'BEGIN':([0,],[2,]),'$end':([1,11,],[0,-1,]),'ID':([2,4,5,6,7,9,10,13,14,17,18,19,21,23,24,27,29,30,31,33,36,37,40,41,],[8,8,-4,-5,-6,14,15,16,-8,-7,-10,26,28,31,-12,-15,-9,-16,-11,35,-13,28,28,-14,]),'PRINT':([2,4,5,6,7,14,17,18,27,29,30,31,41,],[9,9,-4,-5,-6,-8,-7,-10,-15,-9,-16,-11,-14,]),'DEF':([2,4,5,6,7,14,17,18,27,29,30,31,41,],[10,10,-4,-5,-6,-8,-7,-10,-15,-9,-16,-11,-14,]),'END':([3,4,5,6,7,12,14,17,18,27,29,30,31,41,],[11,-3,-4,-5,-6,-2,-8,-7,-10,-15,-9,-16,-11,-14,]),'ASIGNAR':([8,],[13,]),'IF':([13,],[19,]),'PARENT_ABRE':([13,16,25,],[20,22,32,]),'SIMBOLO':([15,35,39,],[21,37,40,]),'CONCATENAR':([16,28,],[24,24,]),'IN':([16,26,28,],[25,33,25,]),'PARENT_CIERRA':([20,22,34,],[27,30,36,]),'ELSE':([31,38,],[-11,39,]),'CONSTANTE':([32,],[34,]),}
+_lr_action_items = {'BEGIN':([0,],[2,]),'$end':([1,11,],[0,-1,]),'ID':([2,4,5,6,7,9,10,13,14,17,19,20,22,24,26,27,29,30,31,32,33,38,39,40,43,44,],[8,8,-4,-5,-6,14,15,16,-8,-7,-11,25,29,-10,29,-15,-13,-9,-18,36,-12,-14,29,-16,29,-17,]),'PRINT':([2,4,5,6,7,14,17,19,24,29,30,31,33,38,44,],[9,9,-4,-5,-6,-8,-7,-11,-10,-13,-9,-18,-12,-14,-17,]),'DEF':([2,4,5,6,7,14,17,19,24,29,30,31,33,38,44,],[10,10,-4,-5,-6,-8,-7,-11,-10,-13,-9,-18,-12,-14,-17,]),'END':([3,4,5,6,7,12,14,17,19,24,29,30,31,33,38,44,],[11,-3,-4,-5,-6,-2,-8,-7,-11,-10,-13,-9,-18,-12,-14,-17,]),'ASIGNAR':([8,],[13,]),'PARENT_ABRE':([13,16,28,29,],[18,23,34,35,]),'IF':([13,],[20,]),'SIMBOLO':([15,36,42,],[22,39,43,]),'CONCATENAR':([16,21,29,31,38,],[-13,27,-13,-14,-14,]),'IN':([16,21,25,29,31,38,],[-13,28,32,-13,-14,-14,]),'PARENT_CIERRA':([18,23,35,37,],[24,31,38,40,]),'ELSE':([29,33,38,41,],[-13,-12,-14,42,]),'CONSTANTE':([34,],[37,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'Prog':([0,],[1,]),'ListaSent':([2,4,],[3,12,]),'Sent':([2,4,],[4,4,]),'Asig':([2,4,],[5,5,]),'Impr':([2,4,],[6,6,]),'Func':([2,4,],[7,7,]),'Expr':([13,],[17,]),'Exprt':([13,21,37,40,],[18,29,38,41,]),'Oper':([16,28,],[23,23,]),}
+_lr_goto_items = {'Prog':([0,],[1,]),'ListaSent':([2,4,],[3,12,]),'Sent':([2,4,],[4,4,]),'Asig':([2,4,],[5,5,]),'Impr':([2,4,],[6,6,]),'Func':([2,4,],[7,7,]),'Expr':([13,],[17,]),'Exprt':([13,22,39,43,],[19,30,41,44,]),'Valor':([13,22,26,39,43,],[21,21,33,21,21,]),'Oper':([21,],[26,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -34,13 +34,15 @@ _lr_productions = [
   ('Sent -> Impr','Sent',1,'p_Sent','plyparser.py',19),
   ('Sent -> Func','Sent',1,'p_Sent','plyparser.py',20),
   ('Asig -> ID ASIGNAR Expr','Asig',3,'p_Asig','plyparser.py',24),
-  ('Impr -> PRINT ID','Impr',2,'p_Impr','plyparser.py',32),
-  ('Func -> DEF ID SIMBOLO Exprt','Func',4,'p_Func','plyparser.py',40),
-  ('Expr -> Exprt','Expr',1,'p_Expr','plyparser.py',45),
-  ('Exprt -> ID Oper ID','Exprt',3,'p_Exprt','plyparser.py',49),
-  ('Oper -> CONCATENAR','Oper',1,'p_Oper_concat','plyparser.py',124),
-  ('Oper -> IN PARENT_ABRE CONSTANTE PARENT_CIERRA','Oper',4,'p_Oper_in','plyparser.py',128),
-  ('Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt','Expr',9,'p_Condicional','plyparser.py',132),
-  ('Expr -> PARENT_ABRE PARENT_CIERRA','Expr',2,'p_Expr_parentesis','plyparser.py',155),
-  ('Expr -> ID PARENT_ABRE PARENT_CIERRA','Expr',3,'p_Expr_callfunc','plyparser.py',159),
+  ('Impr -> PRINT ID','Impr',2,'p_Impr','plyparser.py',40),
+  ('Func -> DEF ID SIMBOLO Exprt','Func',4,'p_Func','plyparser.py',48),
+  ('Expr -> PARENT_ABRE PARENT_CIERRA','Expr',2,'p_Expr_parentesis','plyparser.py',58),
+  ('Expr -> Exprt','Expr',1,'p_Expr','plyparser.py',62),
+  ('Exprt -> Valor Oper Valor','Exprt',3,'p_Exprt','plyparser.py',66),
+  ('Valor -> ID','Valor',1,'p_ValorId','plyparser.py',70),
+  ('Valor -> ID PARENT_ABRE PARENT_CIERRA','Valor',3,'p_ValorFunction','plyparser.py',74),
+  ('Oper -> CONCATENAR','Oper',1,'p_Oper_concat','plyparser.py',83),
+  ('Oper -> IN PARENT_ABRE CONSTANTE PARENT_CIERRA','Oper',4,'p_Oper_in','plyparser.py',87),
+  ('Expr -> IF ID IN ID SIMBOLO Exprt ELSE SIMBOLO Exprt','Expr',9,'p_Condicional','plyparser.py',91),
+  ('Expr -> ID PARENT_ABRE PARENT_CIERRA','Expr',3,'p_Expr_callfunc','plyparser.py',114),
 ]

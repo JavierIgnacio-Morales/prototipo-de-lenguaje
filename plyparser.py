@@ -22,7 +22,15 @@ def p_Sent(t):
 
 def p_Asig(t):
     '''Asig : ID ASIGNAR Expr'''
+
+    if t[1] in funciones:
+        print(f'Error semántico: {t[1]} ya existe como función')
+        return
     
+    if t[3] is None:
+        print("Error semántico: expresión inválida")
+        return
+        
     if isinstance(t[3], tuple):
         tabla[t[1]] = evaluar(t[3])
     else:
@@ -38,87 +46,38 @@ def p_Impr(t):
 
 def p_Func(t):
     '''Func : DEF ID SIMBOLO Exprt'''
+
+    if t[2] in tabla or t[2] in funciones:
+        print(f"Error semantico: función '{t[2]}' ya existe")
+        return
+    
     if t[4] is not None:
         funciones[t[2]] = t[4]
 
+def p_Expr_parentesis(t):
+    'Expr : PARENT_ABRE PARENT_CIERRA'
+    t[0] = "()"
+
 def p_Expr(t):
-    '''Expr    : Exprt'''
+    '''Expr : Exprt'''
     t[0] = t[1]
 
 def p_Exprt(t):
-    '''Exprt : ID Oper ID'''
+    '''Exprt : Valor Oper Valor'''
     t[0] = (t[1], t[2], t[3])
 
-def evaluar(expr):
+def p_ValorId(t):
+    '''Valor : ID'''
+    t[0] = t[1]
 
-    izq = expr[0]
-    op  = expr[1]
-    der = expr[2]
+def p_ValorFunction(t):
+    '''Valor : ID PARENT_ABRE PARENT_CIERRA'''
 
-    if izq not in tabla:
-        print(f"Error semántico: {izq} no definida")
-        return None
-
-    if der not in tabla:
-        print(f"Error semántico: {der} no definida")
-        return None
-
-    if op == "+":
-        return tabla[izq] + tabla[der]
-
-    elif isinstance(op, tuple) and op[0] == "in":
-
-        pos = int(op[1])
-
-        if not (1 <= pos <= 3):
-            print("Error semántico: rango no permitido (1 a 3)")
-            return None
-
-        base = tabla[der]
-        ins  = tabla[izq]
-
-        if not (0 <= pos <= len(base)):
-            print("Error semántico: posición fuera de rango")
-            return None
-
-        return base[:pos] + ins + base[pos:]
-
-    print("Error semántico: operación inválida")
-    return None
-
-# def p_Exprt(t):
-#     '''Exprt : ID Oper ID'''
-#     o = t[2]
-#     if t[1] not in tabla:
-#         print(f"Error semántico: {t[1]} no definida")
-#         return
-
-#     if t[3] not in tabla:
-#         print(f"Error semántico: {t[3]} no definida")
-#         return
-#     if o == "+":
-#         t[0] = tabla[t[1]] + tabla[t[3]]
+    if t[1] not in funciones:
+        print(f"Error semantico: función '{t[1]}' no existe")
+        return
     
-#     elif isinstance(o, tuple) and o[0] == "in":
-#         try:
-#             pos = int(o[1])
-#             if 1 <= pos <= 3:
-#                 base = tabla[t[3]]
-#                 ins = tabla[t[1]]
-#                 if 0 <= pos <= len(base):
-#                     t[0] = base[:pos] + ins + base[pos:]
-#                 else:
-#                     print("Error semántico: posición fuera de rango")
-#                     return
-#             else:
-#                 print("Error semántico: rango no permitido (1 a 3)")
-#                 return
-#         except ValueError:
-#             print("Error semántico: posición inválida")
-#             return
-#     else:
-#         print("Error semántico: operación inválida")
-#         return
+    t[0] = t[1]
 
 def p_Oper_concat(t):
     'Oper : CONCATENAR'
@@ -151,10 +110,6 @@ def estaIncluido(a , b):
         capas -= 1
     return(bp == a)
 
-def p_Expr_parentesis(t):
-    'Expr : PARENT_ABRE PARENT_CIERRA'
-    t[0] = "()"
-
 def p_Expr_callfunc(t):
     '''Expr : ID PARENT_ABRE PARENT_CIERRA'''
     
@@ -162,6 +117,54 @@ def p_Expr_callfunc(t):
         print(f'Error semántico: {t[1]} no definida')
         return
     t[0] = evaluar(funciones[t[1]])
+
+
+def evaluar(expr):
+
+    izq = expr[0]
+    op  = expr[1]
+    der = expr[2]
+
+    if izq not in tabla and izq not in funciones:
+        print(f"Error semántico: {izq} no definida")
+        return None
+
+    if der not in tabla and der not in funciones:
+        print(f"Error semántico: {der} no definida")
+        return None
+
+    if izq in funciones:
+        izq = evaluar(funciones[izq])
+    else:
+        izq = tabla[izq]   
+    
+    if der in funciones:
+        der = evaluar(funciones[der])
+    else:
+        der = tabla[der]
+
+    if op == "+":
+        return izq + der
+
+    elif isinstance(op, tuple) and op[0] == "in":
+
+        pos = int(op[1])
+
+        if not (1 <= pos <= 3):
+            print("Error semántico: rango no permitido (1 a 3)")
+            return None
+
+        base = der
+        ins  = izq
+
+        if not (0 <= pos <= len(base)):
+            print("Error semántico: posición fuera de rango")
+            return None
+
+        return base[:pos] + ins + base[pos:]
+
+    print("Error semántico: operación inválida")
+    return None
 
 def p_error(t):
     if t:
@@ -174,7 +177,8 @@ parser = yacc.yacc()
 #cadena = 'begin = a () end'
 
 # muestra en pantalla (())(())(())(())(())(())(())(())
-cadena = 'begin a = () def inc: a in(1) a b = inc() + inc() def conc: b + b c = conc() + conc() print c end'
+#cadena = 'begin a = () def inc: a in(1) a b = inc() + inc() def conc: b + b c = conc() + conc() print c end'
+#cadena = 'begin a = () def inc: a in(1) a b = inc() + inc() print b end'
 #cadena = 'begin a = () b = a + a print b end'
-resultado = parser.parse(cadena, lexer=lexer)
-print("resultado =", resultado)
+#resultado = parser.parse(cadena, lexer=lexer)
+#print("resultado =", resultado)
