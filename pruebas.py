@@ -64,6 +64,23 @@ end
 '''
 """
 
+
+# PRUEBAS DE ERROR
+"""
+cadena = '''
+begin
+a = ()
+a = b + a
+end
+'''
+"""
+
+cadena = '''
+begin
+a = ()
+def a: a + a
+end
+'''
 resultado = parser.parse(cadena, lexer=lexer)
 
 print(resultado)
