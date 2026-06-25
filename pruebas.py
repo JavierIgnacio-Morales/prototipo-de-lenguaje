@@ -64,6 +64,22 @@ end
 '''
 """
 
+cadena = '''
+begin 
+a = ()
+def inc: a in(1) a
+b = a in(2) inc()
+c = b in(3) b
+d = if a in c: c + c else: a + c
+a = inc() + c
+a = a + a
+end
+'''
+
+resultado = parser.parse(cadena, lexer=lexer)
+
+print(resultado)
+
 
 # PRUEBAS DE ERROR
 """
@@ -74,14 +90,14 @@ a = b + a
 end
 '''
 """
-
+"""
 cadena = '''
 begin
 a = ()
 def a: a + a
 end
 '''
-resultado = parser.parse(cadena, lexer=lexer)
+"""
 
-print(resultado)
+
 
