@@ -108,14 +108,85 @@ Se decide crear el lenguaje de programación denominado "paréntesis" el cual pe
 
 ## Especificaciones semánticas:
 
-> A + B -> AB  
-> A in B = A in(1) B -> (A)  
-> A in(k) (B) -> (A in(k-1) B)  
-> A in(k) (B C) -> (A in(k) B) C   
-> if(+) then { A } else { B } -> A
-> if(in) then{ A } else { B } -> B  
-> V = A  
-> V  
+Las estructuras básicas del lenguaje son cadenas formadas por pares de paréntesis balanceados.
+
+*Operador de concatenación*:
+
+A + B → AB
+
+Ejemplos:
+
+() + () → ()()
+
+(()) + () → (())()
+
+*Operador de inclusión*:
+
+A in(1) B → insertar A dentro de la primera capa de B.
+
+Ejemplos:
+
+() in(1) () → (())
+
+() in(2) (()) → ((()))
+
+() in(1) (()) → (()())
+
+*Condicional*:
+
+if A in B : X else : Y
+
+Evalúa si la estructura A se encuentra incluida dentro de B.
+
+Si la condición es verdadera, el resultado es X.
+
+Si la condición es falsa, el resultado es Y.
+
+Ejemplos:
+
+if () in (()) : A else : B → A
+
+if ((())) in () : A else : B → B
+
+*Asignación*:
+
+V = E
+
+Evalúa la expresión E y almacena el resultado en la variable V.
+
+Ejemplo:
+
+a = ()
+b = a + a
+
+Luego:
+
+a contiene ()
+b contiene ()()
+
+*Funciones*:
+
+def f : E
+
+Define una función identificada por f cuyo resultado será la evaluación de la expresión E.
+
+La invocación de una función se realiza mediante:
+
+f()
+
+Ejemplo:
+
+def inc : a in(1) a
+
+inc() → (())
+
+*Errores semánticos detectados*:
+
+Uso de variables no definidas.
+Uso de funciones no definidas.
+Reutilización de nombres entre variables y funciones.
+Operaciones sobre identificadores inexistentes.
+Valores inválidos para el operador in(n).
 
 ------------------------------------------------
 ------------------------------------------------
