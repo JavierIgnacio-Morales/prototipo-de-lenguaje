@@ -223,3 +223,21 @@ print c // muestra en pantalla (())(())(())(())(())(())(())(())
 end
 
 ```  
+## Conclusiones sobre el prototipo del lenguaje “Paréntesis”:
+
+Voy a encarar las conclusiones hablando de cada una de las etapas y en el mismo orden en que se fueron dando y desarrollando.
+
+*Creación del lenguaje y su alcance*:
+	Fue una de las etapas más difíciles, pensar en un lenguaje sin un por qué y para qué es muy difícil que salga de cero, primero hubo que pensar y buscar un propósito para luego definir el lenguaje y esa búsqueda fue difícil, llevó su tiempo, y se me ocurrió buscar una idea entre los ejercicios de la materia anterior “Lenguajes formales”, pensé que tenía sentido encontrarla ahí y así fue, o al menos al profesor lo vio viable y dio el ok.
+Desde ese entonces se comenzó con la implementación del lenguaje “Paréntesis”, un lenguaje que permita la creación de estructuras formadas por pares paréntesis “()”, donde el tipo de estructuras no tenga límite y donde cada una de estas pueda ser desarrollada de la forma en que el programador la haya pensado.
+
+*Implementación*:
+ 	A medida que se fue implementando me fui encontrando con obstáculos como, cómo y hasta dónde introducir una estructura dentro de otra sin que genere un problema, por lo cual, para no generar problemas se limito a la inclusión de estructuras dentro de otras hasta solamente la tercera “capa interna” de la otra estructura, luego me daría cuenta de que sin limitaciones tampoco se generaría problema mayor, pero se decidió dejar así para limitar y no producir problemas de bucles grandes que hagan lento su ejecución.
+	Otro inconveniente fue salir de que solo se podía concatenar entre variables y no entre funciones o variables y funciones, fue difícil el código en el parser, hubo que cambiar bastante lo hecho en un primer momento, pero se logró, se utilizó la ayuda de la IA para lograrlo porque en un momento no podía avanzar y me sentía frustrado por ello.
+
+*Pruebas*:
+	A medida que se fueron realizando pruebas para ver su funcionamiento me fui encontrando con muchos errores del tipo semántico que no estaban capturados para lo cual se le fueron agregando todas las salidas de error que se fueron encontrando.
+	También se encontraron errores en la gramática, tuve que cambiar algunas producciones ya que no coincidían con lo esperado, sobre todo en que se puedan incluir o concatenar funciones con funciones o entre variables y funciones.
+
+*Apreciación final*:
+	Me gustó mucho esta parte de la materia, el hecho de entender como los temas de la materia, el scanner, el parser, etc., intervienen en como se crea un lenguaje, o al menos este tipo de lenguajes. Antes pensaba que era algo extremadamente lejano de lograr, que para eso se debería tener una base muy gigante de conocimiento, pero no, obviamente hay que tener mucho conocimiento y saber lo que se está haciendo antes de encarar un proyecto en serio como crear un nuevo lenguaje de programación, es divertido y lleva mucho tiempo crearlo bien, me falta conocer muchas cosas todavía sobre este tema, pero por lo aprendido y hecho me siento conforme.
