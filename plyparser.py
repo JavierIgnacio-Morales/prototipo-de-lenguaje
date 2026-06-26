@@ -174,8 +174,10 @@ def p_error(t):
 
 parser = yacc.yacc()
 
-#cadena = 'begin = a () end'
 
+
+
+#cadena = ' a = () end'
 # muestra en pantalla (())(())(())(())(())(())(())(())
 #cadena = 'begin a = () def inc: a in(1) a b = inc() + inc() def conc: b + b c = conc() + conc() print c end'
 #cadena = 'begin a = () def inc: a in(1) a b = inc() + inc() print b end'

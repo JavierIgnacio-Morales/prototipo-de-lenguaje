@@ -1,0 +1,10 @@
+begin 
+a = ()
+b = a + a
+c = b in(1) a
+e = a in(1) a
+f = a + e
+g = f in(1) a
+h = c + g
+print h
+end

@@ -1,0 +1,8 @@
+begin
+a = ()
+
+pri = a + a
+
+def pri: a + pri
+
+end

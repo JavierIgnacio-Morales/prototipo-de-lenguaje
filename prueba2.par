@@ -1,0 +1,10 @@
+begin
+a = ()
+b = a in(1) a
+c = if a in b: b in(2) b else: b + b
+d = c + a
+e = a + d 
+e = e + e
+e = e + e
+e = e + e
+end

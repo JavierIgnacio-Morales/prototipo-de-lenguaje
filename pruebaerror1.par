@@ -1,0 +1,5 @@
+cadena = '''
+begin
+a = ()
+a = b + a
+end
